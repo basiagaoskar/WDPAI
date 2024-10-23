@@ -1,0 +1,41 @@
+.container {
+    width: 100vw;
+    height: 50vh;
+    border: 1px;
+    border-style: solid;
+    border-radius: 10vh;
+
+}
+
+.left {
+    float: left;
+    width: 50vw;
+    height: 50vh;
+    background: #C6C5FF;
+    border-top-left-radius: 10vh;
+    border-bottom-left-radius: 10vh;
+    text-align: center;
+    font-family: carter One;
+}
+
+.right{
+    float: right;
+    width: 49vw;
+    height: 50vh;
+    background-color: white;
+    text-align: center;
+    border-top-right-radius: 10vh;
+    border-bottom-right-radius: 10vh;
+}
+
+.benchGuy{
+    width: 30vw;
+}
+.loginButton{
+    width: 15vw;
+    height: 4vh;
+    background-color: #EC2529;
+    color: white;
+    border-radius: 10px;
+    border: 0;
+}
