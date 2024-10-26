@@ -1,41 +1,176 @@
 .container {
-    width: 100vw;
-    height: 50vh;
+    width: 75vw;
+    height: 76vh;
+    margin-top: 12vh;
+    margin-left: 20vh;
     border: 1px;
     border-style: solid;
     border-radius: 10vh;
-
 }
 
 .left {
     float: left;
-    width: 50vw;
-    height: 50vh;
+    width: 45vw;
+    height: 76vh;
     background: #C6C5FF;
     border-top-left-radius: 10vh;
     border-bottom-left-radius: 10vh;
     text-align: center;
-    font-family: carter One;
+    font-family: 'carter One';
+}
+
+.logo_and_text{
+    margin-top: 5vh;
+}
+
+.benchGuy{
+    width: 23vw;
+}
+
+.logo{
+    float: left;
+    width: 13vw;
+}
+
+.left h1{
+    font-size: 8vh;
+    float: left;
+    margin-left: 25vh;
+    line-height: 7vh;
 }
 
 .right{
-    float: right;
-    width: 49vw;
-    height: 50vh;
+    float: left;
+    width: 30vw;
+    height: 76vh;
     background-color: white;
     text-align: center;
     border-top-right-radius: 10vh;
     border-bottom-right-radius: 10vh;
+    font-family: Mulish;
+
 }
 
-.benchGuy{
-    width: 30vw;
+.right h1{
+    font-size: 11vh;
+    font-weight: 900;
+    margin-top: 5vh;
 }
-.loginButton{
-    width: 15vw;
+
+input{
+    background-color: #E7E7E7;
+    border-width: 0px 0px 0.2vh 0px;
+    border-color: #A4A3FF;
+    color: rgba(0, 0, 0, 0.5);
+    width: 34vh;
     height: 4vh;
+    margin-top: 2vh;
+    font-size: 2vh;
+}
+
+.forgotPasswordContainer{
+    margin-left: 25vh;
+}
+
+.forgotPassword{
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 900;
+    font-size: 1vh;
+    text-decoration: none;
+}
+
+.forgotPassword:hover{
+    text-decoration: underline;
+}
+
+.loginButton{
+    width: 10vw;
+    height: 5vh;
+    font-size: 3vh;
+    font-weight: 700;
     background-color: #EC2529;
     color: white;
-    border-radius: 10px;
+    border-radius: 6vh;
     border: 0;
+    cursor: pointer;
+    margin-top: 3vh;
+}
+
+.loginButton:hover{
+    background-color: #99181a;
+}
+
+.separator{
+    display: flex;
+    align-items: center;
+    margin-top: 5vh;
+}
+
+.separator hr{
+    flex: 1;
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.separator span{
+    padding: 0vh 1vh;
+    font-size: 2vh;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 900;
+    border: 0.15vh solid rgba(0, 0, 0, 0.5);
+    border-radius: 2vh;
+}
+
+.facebook{
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    margin-top: 2vh;
+}
+
+.facebookImage{
+    width: 2.5vw;
+}
+
+.facebookLogin{
+    background-color: #5475C8;
+    color: white;
+    font-size: 2vh;
+    font-weight: 900;
+    text-align: center;
+    width: 15vw;
+    border: none;
+    cursor: pointer;
+    height: 5vh;
+}
+
+.facebookLogin:hover{
+    background-color: #4c69b4;
+}
+
+.google{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1vh;
+}
+
+.googleImage{
+    width: 2.5vw;
+
+}
+
+.googleLogin{
+    background-color: #EEEAEA;
+    font-size: 2vh;
+    font-weight: 900;
+    text-align: center;
+    width: 15vw;
+    border: none;
+    cursor: pointer;
+    height: 5vh;
+}
+
+.googleLogin:hover{
+    background-color: #d3d0d0;
 }

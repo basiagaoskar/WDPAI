@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,18 +11,39 @@
 <body>
     <div class="container">
         <div class="left">
-            <h1>xd<br>xd</h1>
-            <img src="../img/logo.png" alt="LOGO"><br>
+            <div class="logo_and_text">
+                <h1>ZIUTKI<br>GYM</h1>
+                <img class="logo" src="../img/logo2.png" alt="LOGO"><br>
+            </div>
             <img class="benchGuy" src="../img/cute-man-barbell.png" alt="bench">
         </div>
+
         <div class="right">
             <h1>Login</h1>
             <form>
-                <input name="login" type="text" placeholder="Username"><br>
-                <input name="password" type="password" placeholder="Password"><br>
-                <button class="loginButton">LOGIN</button><br><br>
-                <button>Login with Facebook</button>
-                <button>Login with Google</button>
+                <input name="login" type="text" placeholder="👤 Username" autocomplete="on" maxlength="25" minlength="3" required>
+                <input name="password" type="password" placeholder="🔒 Password" autocomplete="off" maxlength="32" minlength="8" required>
+                <div class="forgotPasswordContainer">
+                    <a class="forgotPassword" href="/reset-password">Forgot password?</a>
+                </div>
+                    
+                <button class="loginButton">Login</button><br><br>
+                    
+                <div class="separator">
+                     <hr style="margin-left: 13vh;">
+                    <span>OR</span>
+                    <hr style="margin-right: 13vh;">
+                </div>
+                
+                
+                <div class="facebook">
+                    <img class="facebookImage" src="../img/Facebook_logo.png" alt="Facebook logo">
+                    <button class="facebookLogin">Login with Facebook</button><br><br>
+                </div>
+                <div class="google">
+                    <img class="googleImage" src="../img/Google__G__logod.jpg" alt="Google logo">
+                    <button class="googleLogin">Login with Google</button>
+                </div>
             </form>        
         </div>
     </div>
