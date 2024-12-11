@@ -13,6 +13,7 @@ body {
     flex-wrap: wrap;
     width: 90%;
     max-width: 2300px;
+    max-height: 820px;
     margin: 5vh auto;
     border: 2px solid #000;
     border-radius: 3rem;
@@ -47,7 +48,6 @@ body {
 
 .benchGuy {
     width: 600px;
-    margin-top: 2rem;
 }
 
 .right {
@@ -101,7 +101,7 @@ input {
     display: block;
     width: 80%;
     max-width: 350px;
-    margin: 5rem auto 0.3rem;
+    margin: 3rem auto 0.3rem;
     padding: 1rem;
     font-size: 2rem;
     font-weight: 700;
@@ -120,7 +120,7 @@ input {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 9rem auto 2rem;
+    margin: 5rem auto 2rem;
     width: 80%;
     max-width: 400px;
 }
@@ -193,6 +193,7 @@ input {
     .container {
         flex-direction: column;
         width: 95%;
+        max-height: none;
         margin: 5vh auto;
     }
 
