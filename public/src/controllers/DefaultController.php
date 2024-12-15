@@ -5,7 +5,7 @@ require_once 'AppController.php';
 class DefaultController extends AppController{
 
     public function login(){
-        $this->render('login', ['message' => 'wassup']);
+        $this->render('login', );
     }
 
     public function workouts() {
