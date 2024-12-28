@@ -4,8 +4,13 @@
     padding: 0;  
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Mulish', sans-serif;
+    
 }
 
 .main-container {
@@ -121,6 +126,7 @@ nav ul li a:hover{
     display: flex;
     justify-content: center;
     gap: 4rem;
+    flex-wrap: wrap;
 }
 
 .service {
@@ -136,6 +142,53 @@ nav ul li a:hover{
     font-size: 3rem;
     color: #EC2529;
     margin-bottom: 1rem;
+}
+
+.contact {
+    margin-top: 5rem;
+    padding: 20px;
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.contact p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.contact ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact ul li {
+    font-size: 1rem;
+    margin: 10px 0;
+}
+
+.contact ul li i {
+    margin-right: 10px;
+    color: #6c757d;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    color: #333;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #007bff;
+}
+
+.social-icons a:nth-child(2):hover {
+    color: #c13584;
 }
 
 footer {
@@ -179,7 +232,7 @@ footer {
 
 
 
-@media (max-width: 768px) {
+@media (max-width: 860px) {
 
     header {
         flex-direction: column;
@@ -205,7 +258,6 @@ footer {
     }
 
     .service-box {
-        flex-direction: column;
         align-items: center;
         gap: 1.5rem; 
     }
@@ -240,5 +292,20 @@ footer {
     
     nav ul li a {
         font-size: 2rem; 
+    }
+
+    .contact{
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .logo-and-text img{
+        display: none;
+    }
+    
+    nav ul{
+        flex-direction: column;
+        gap: 1rem;
     }
 }

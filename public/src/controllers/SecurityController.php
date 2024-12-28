@@ -31,10 +31,23 @@ class SecurityController extends AppController {
                 return $this->render('login', ['messages'=> ['Wrong password!']]);
             }
             
+            session_start();
+            session_regenerate_id();
+            $_SESSION['loggedin'] = true;
+            $_SESSION['user_email'] = $user->getEmail();
+
             header("Location: /workouts");
             exit;
         }
         return $this->render('login');
 
+    }
+    public function logout() {
+        session_start();
+        session_unset();
+        session_destroy();
+
+        header("Location: /login");
+        exit;
     }
 }

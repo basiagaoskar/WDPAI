@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"/>
-    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="../img/icon.ico">
+    <title>Workouts</title>
     <link rel="stylesheet" type="text/css" href="/css/workouts-styles.css">
 </head>
 <body>
@@ -31,6 +32,12 @@
                 <li>
                     <i class="fa-solid fa-gear"></i>
                     <a href="#" class="button">Setting</a>
+                </li>
+                <li>
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <form action="/logout" method="POST" style="display:inline;">
+                        <button type="submit" class="button">Logout</button>
+                    </form>
                 </li>
             </ul>
         </nav>

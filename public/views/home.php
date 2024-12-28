@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"/>
     <link rel="stylesheet" type="text/css" href="/css/home-styles.css">
+    <link rel="icon" type="image/x-icon" href="../img/icon.ico">
     <title>Home Page</title>
 </head>
 <body>
@@ -19,8 +20,8 @@
                 <nav>
                     <ul>
                         <li><a href="#">Home</a></li>
-                        <li><a href="#about">Login</a></li>
-                        <li><a href="#services">About</a></li>
+                        <li><a href="login">Login</a></li>
+                        <li><a href="#about-us">About</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
@@ -38,7 +39,7 @@
         </section>
             
 
-        <section class="about-us">
+        <section class="about-us" id="about-us">
             <h2>About Us</h2>
             <p>At Ziutki Gym, we’re dedicated to helping you transform both your body and mind. 
                 Our innovative facilities, expert trainers, and diverse fitness programs are 
@@ -69,6 +70,40 @@
                     <h3>Wellness Programs</h3>
                     <p>Holistic programs to improve your mental and physical well-being.</p>
                 </div>
+                <div class="service">
+                    <i class="fa-solid fa-apple-whole"></i>
+                    <h3>Nutrition Coaching</h3>
+                     <p>Get expert advice on healthy eating and meal planning for optimal performance.</p>
+                </div>
+                <div class="service">
+                    <i class="fa-solid fa-hot-tub"></i>
+                    <h3>Recovery Therapy</h3>
+                    <p>Relax and recover with our massage and sauna facilities.</p>
+                </div>
+
+                <div class="service">
+                    <i class="fa-solid fa-basketball"></i>
+                    <h3>Sports Training</h3>
+                    <p>Specialized programs to boost your performance in various sports.</p>
+                </div>
+                
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or need more information, feel free to contact us:</p>
+            <ul>
+                <li><i class="fa-solid fa-phone"></i> Phone: +123 456 789</li>
+                <li><i class="fa-solid fa-envelope"></i> Email: contact@ziutkigym.com</li>
+                <li><i class="fa-solid fa-location-dot"></i> Address: 123 Fitness Street, Wellness City</li>
+            </ul>
+            
+            <p>Follow us on social media:</p>
+            <div class="social-icons">
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-twitter"></i></a>
             </div>
         </section>
 
