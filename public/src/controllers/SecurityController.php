@@ -27,7 +27,7 @@ class SecurityController extends AppController {
                 return $this->render('login', ['messages' => ['User with this email does not exist!']]);
             }
         
-            if ($user->getPassword() !== $password) {
+            if (!password_verify($password, $user->getPassword())) {
                 return $this->render('login', ['messages'=> ['Wrong password!']]);
             }
             
@@ -49,5 +49,51 @@ class SecurityController extends AppController {
 
         header("Location: /login");
         exit;
+    }
+
+    public function registration() {
+        if ($this->isPost()) {
+            $name = $_POST["name"] ??"";
+            $surname = $_POST["surname"] ??"";
+            $email = $_POST['email'] ?? '';
+            $password = $_POST['password'] ?? '';
+            $confirmPassword = $_POST['confirm-password'] ?? '';
+
+            $userRepository = new UserRepository();
+
+            if ($userRepository->getUser($email)) {
+                return $this->render('registration', ['messages' => ['User already exists!']]);
+            }
+
+            if (empty($email) || empty($password) || empty($confirmPassword)) {
+                return $this->render('registration', ['messages' => ['Please fill in all fields!']]);
+            }
+
+            if ($password !== $confirmPassword) {
+                return $this->render('registration', ['messages' => ['Passwords do not match!']]);
+            }
+
+            if (!$this->isStrongPassword($password)) {
+                return $this->render('registration', ['messages' => ['Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character!']]);
+            }
+
+            $user = new User($email, password_hash($password, PASSWORD_DEFAULT), $name, $surname);
+            $userRepository->createUser($user);
+
+            session_start();
+            session_regenerate_id();
+            $_SESSION['loggedin'] = true;
+            $_SESSION['user_email'] = $user->getEmail();
+
+            header("Location: /login");
+            exit;
+        }
+
+        return $this->render('registration');
+    }
+
+    private function isStrongPassword($password) {
+        $pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/';
+        return preg_match($pattern, $password);
     }
 }

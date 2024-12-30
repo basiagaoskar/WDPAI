@@ -46,7 +46,7 @@ body {
     margin-bottom: 1rem;
 }
 
-.benchGuy {
+.benchGuy, .registerPhoto {
     width: 600px;
 }
 
@@ -57,7 +57,7 @@ body {
     padding: 2rem;
 }
 
-.right h1 {
+.right h1, h2 {
     font-size: 8rem;
     font-weight: 900;
     margin-bottom: 0.5rem;
@@ -68,11 +68,16 @@ body {
     margin-top: 5rem;
 }
 
+.input-container{
+    margin: auto;
+    max-width: 400px;
+}
+
 input {
     display: block;
     width: 90%;
     max-width: 350px;
-    margin: 1rem auto;
+    margin: 1rem auto 0.5rem;
     padding: 0.5rem;
     font-size: 1rem;
     background-color: #E7E7E7;
@@ -82,22 +87,26 @@ input {
     
 }
 
-.forgotPasswordContainer {
-    text-align: center;
-}
-
 .forgotPassword {
     color: rgba(0, 0, 0, 0.5);
     font-weight: 900;
     font-size: 0.9rem;
     text-decoration: none;
+    float: right;
+    margin-right: 1.5rem;
 }
 
 .forgotPassword:hover {
     text-decoration: underline;
 }
 
-.loginButton {
+.messages {
+    margin-top: 2rem;
+    color: red;
+    text-align: center;
+}
+
+.loginButton, .registerButton{
     display: block;
     width: 80%;
     max-width: 350px;
@@ -112,7 +121,23 @@ input {
     cursor: pointer;
 }
 
-.loginButton:hover {
+.registerButton{
+    margin: 2rem auto 0;
+}
+
+.registerButton:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    border: 1px solid #aaaaaa;
+    opacity: 0.7;
+}
+
+.registerButton:hover:not(:disabled) {
+    background-color: #EC2529;
+}
+
+.loginButton:hover, .registerButton:hover:not(:disabled) {
     background-color: #99181a;
 }
 
@@ -120,7 +145,7 @@ input {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 5rem auto 2rem;
+    margin: 4rem auto 1rem;
     width: 80%;
     max-width: 400px;
 }
@@ -187,9 +212,35 @@ input {
     background-color: #d3d0d0;
 }
 
+.password-requirements {
+    font-size: 0.9rem;
+    color: #666;
+    margin-left: 1.5rem;
+}
 
+.requirement {
+    text-align: left;
+    list-style-type: none;
+    color: red;
+    margin: 0.2em;
+}
+.requirement.valid {
+    color: green;
+}
 
-@media (max-width: 1364px) {
+.register-link, .login-link {
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 14px;
+}
+.register-link:hover, .login-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 1600px) {
     .container {
         flex-direction: column;
         width: 95%;
@@ -206,25 +257,28 @@ input {
         font-size: 4rem;
     }
 
-    .right h1 {
+    .right h1, h2 {
         font-size: 4.5rem;
     }
-
+    
     .right form {
         margin-top: 4rem;
         
     }
 
-    .benchGuy {
+    .benchGuy, .registerPhoto {
         display: none;
     }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 500px) {
     .logo{
         display: none;
     }
+}
 
-    .separator{
+@media (max-width: 350px) {
+    h2 {
+        font-size: 3rem;
     }
 }

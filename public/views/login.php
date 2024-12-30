@@ -23,23 +23,24 @@
 
         <div class="right">
             <h1>Login</h1>
-            <div class="meesages">
-            </div>
             <form action="login" method="POST">
-                <input name="email" type="text" placeholder="✉️ Email" autocomplete="on">
-                <input name="password" type="password" placeholder="🔒 Password" autocomplete="off">
-                <?php 
-                    if (isset($messages)) {
-                        foreach ($messages as $message) {
-                            echo $message;
-                        }
-                    }
-                ?>
-                <button class="loginButton" type="submit">Login</button>
-                <div class="forgotPasswordContainer">
+                <div class="input-container">
+                    <input name="email" type="email" placeholder="✉️ Email" autocomplete="on">
+                    <input name="password" type="password" placeholder="🔒 Password" autocomplete="off">
                     <a class="forgotPassword" href="/reset-password">Forgot password?</a>
                 </div>
-                    
+                <div class="messages">
+                    <?php 
+                if (isset($messages)) {
+                    foreach ($messages as $message) {
+                        echo $message;
+                    }
+                }
+                ?>
+                </div>
+                <button class="loginButton" type="submit">Login</button>
+                <a href="registration" class="register-link">Don't have an account? Register here</a>
+
                 <div class="separator">
                     <hr>
                     <span>OR</span>

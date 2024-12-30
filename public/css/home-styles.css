@@ -218,20 +218,6 @@ footer {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media (max-width: 860px) {
 
     header {
@@ -267,12 +253,10 @@ footer {
         max-width: 300px; 
     }
 
-
     nav ul {
         margin: 1rem;
     }
 
-    
     .motivation-text h1 {
         font-size: 3rem;
     }
