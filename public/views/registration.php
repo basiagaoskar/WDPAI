@@ -4,6 +4,7 @@
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"/>
     <link rel="stylesheet" type="text/css" href="/css/login-styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,8 +28,12 @@
                 <input name="name" type="text" placeholder="👤 Name" autocomplete="on" required>
                 <input name="surname" type="text" placeholder="👤 Surname" autocomplete="on" required>
                 <input name="email" type="email" placeholder="✉️ Email" autocomplete="on" required>
-                <input name="password" id="password" type="password" placeholder="🔒 Password" autocomplete="off" required>
-                
+                <div class="password-container"> 
+                    <input name="password" id="password" type="password" placeholder="🔒 Password" autocomplete="off" required>
+                    <span  id="togglePassword">
+                        <i class="fa-solid fa-eye"></i>
+                    </span>
+                 </div>
                 <div class="password-requirements">
                     <ul>
                         <li class="requirement" id="length">At least 8 characters</li>

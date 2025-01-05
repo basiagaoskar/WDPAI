@@ -20,12 +20,16 @@ class UserRepository extends Repository
             return null;
         }
 
-        return new User(
+        $userObj = new User(
             $user['email'],
             $user['password'],
             $user['name'],
-            $user['surname']
+            $user['surname'],
+            $user['role']
         );
+        $userObj->setId($user['id']);
+
+        return $userObj;
     }
 
     public function createUser(User $user): void
@@ -41,5 +45,42 @@ class UserRepository extends Repository
         $stmt->bindParam(':surname', $user->getSurname(), PDO::PARAM_STR);
 
         $stmt->execute();
+    }
+
+    public function getAllUsers(): array
+    {
+        $stmt = $this->database->connect()->prepare('
+        SELECT * FROM users ORDER BY id ASC
+        ');
+        $stmt->execute();
+
+        $users = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $user = new User($row['email'], $row['password'], $row['name'], $row['surname'], $row['role']);
+            $user->setId($row['id']);
+            $users[] = $user;
+        }
+
+        return $users;
+    }
+
+    public function deleteUserByEmail(string $email): bool
+    {
+        $stmt = $this->database->connect()->prepare('
+            DELETE FROM users WHERE email = :email
+        ');
+
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        return $stmt->execute();
+    }
+
+    public function updateUserRole($email, $role) {
+        $stmt = $this->database->connect()->prepare('
+        UPDATE users SET role = :role WHERE email = :email
+        ');
+        
+        $stmt->bindParam(':role', $role);
+        $stmt->bindParam(':email', $email);
+        return $stmt->execute();
     }
 }

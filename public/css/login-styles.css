@@ -84,9 +84,9 @@ input {
     border: none;
     border-bottom: 2px solid #A4A3FF;
     color: rgba(0, 0, 0, 0.7);
+    font-weight: 500;
     
 }
-
 .forgotPassword {
     color: rgba(0, 0, 0, 0.5);
     font-weight: 900;
@@ -104,6 +104,8 @@ input {
     margin-top: 2rem;
     color: red;
     text-align: center;
+    font-weight: 900;
+
 }
 
 .loginButton, .registerButton{
@@ -212,10 +214,24 @@ input {
     background-color: #d3d0d0;
 }
 
+.password-container{
+    position: relative; 
+    width: 100%;
+}
+
+#togglePassword {
+    position: absolute; 
+    top: 50%; 
+    right: 2rem; 
+    transform: translateY(-50%); 
+    cursor: pointer;
+}
+
 .password-requirements {
     font-size: 0.9rem;
     color: #666;
     margin-left: 1.5rem;
+    font-weight: 650;
 }
 
 .requirement {
@@ -235,6 +251,7 @@ input {
     color: #007BFF;
     text-decoration: none;
     font-size: 14px;
+    font-weight: 650;
 }
 .register-link:hover, .login-link:hover {
     text-decoration: underline;
@@ -277,8 +294,18 @@ input {
     }
 }
 
+@media (max-width: 475px) {
+    #togglePassword{
+        right: 1.6rem;
+    }
+}
+
 @media (max-width: 350px) {
     h2 {
         font-size: 3rem;
+    }
+
+    #togglePassword{
+        right: 1.2rem;
     }
 }

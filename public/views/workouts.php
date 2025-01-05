@@ -19,7 +19,7 @@
             <ul>
                 <li>
                     <i class="fa-solid fa-dumbbell"></i>
-                    <a href="#" class="button">Workouts</a>
+                    <a href="workouts" class="button">Workouts</a>
                 </li>
                 <li>
                     <i class="fa-solid fa-user-group"></i>
@@ -33,6 +33,12 @@
                     <i class="fa-solid fa-gear"></i>
                     <a href="#" class="button">Setting</a>
                 </li>
+                <?php if ($currentUser->getRole() === 'admin'): ?>
+                <li>
+                    <i class="fa-solid fa-user-shield"></i>
+                    <a href="/adminPanel" class="button">Admin Panel</a>
+                </li>
+                <?php endif; ?>
                 <li>
                     <i class="fa-solid fa-right-from-bracket"></i>
                     <form action="/logout" method="POST" style="display:inline;">
@@ -48,7 +54,7 @@
                         <input placeholder="search">
                     </form>
                 </div>
-                <div class="add-project">
+                <div class="add-workout">
                     <i class="fas fa-plus"></i>
                     add 
                 </div>

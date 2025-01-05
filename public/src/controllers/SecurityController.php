@@ -31,7 +31,6 @@ class SecurityController extends AppController {
                 return $this->render('login', ['messages'=> ['Wrong password!']]);
             }
             
-            session_start();
             session_regenerate_id();
             $_SESSION['loggedin'] = true;
             $_SESSION['user_email'] = $user->getEmail();

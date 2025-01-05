@@ -1,24 +1,33 @@
 class PasswordValidator {
     constructor() {
-        this.password = document.getElementById('password');
-        this.confirmPassword = document.getElementById('confirm-password');
-        this.registerButton = document.getElementById('registerButton');
+        this.password = document.getElementById('password') || null;
+        this.confirmPassword = document.getElementById('confirm-password') || null;
+        this.registerButton = document.getElementById('registerButton') || null;
         this.requirements = {
-            length: document.getElementById('length'),
-            uppercase: document.getElementById('uppercase'),
-            number: document.getElementById('number'),
-            special: document.getElementById('special')
+            length: document.getElementById('length') || null,
+            uppercase: document.getElementById('uppercase') || null,
+            number: document.getElementById('number') || null,
+            special: document.getElementById('special') || null
         };
+        this.togglePassword = document.getElementById('togglePassword') || null;
 
         this.initListeners();
     }
 
     initListeners() {
-        this.password.addEventListener('input', () => this.checkPasswordStrength());
-        this.confirmPassword.addEventListener('input', () => this.checkPasswordStrength());
+        if (this.password && this.requirements.length && this.requirements.uppercase && this.requirements.number && this.requirements.special) {
+            this.password.addEventListener('input', () => this.checkPasswordStrength());
+        }
+        if (this.confirmPassword) {
+            this.confirmPassword.addEventListener('input', () => this.checkPasswordStrength());
+        }
+        if (this.togglePassword) {
+            this.togglePassword.addEventListener('click', () => this.togglePasswordVisibility());
+        }
     }
 
     checkPasswordStrength() {
+        if (!this.password) return;
         const passwordValue = this.password.value;
         const confirmPasswordValue = this.confirmPassword.value;
         let isValid = true;
@@ -64,6 +73,13 @@ class PasswordValidator {
         } else {
             element.classList.remove('valid');
         }
+    }
+
+    togglePasswordVisibility() {
+        const type = this.password.getAttribute('type') === 'password' ? 'text' : 'password';
+        this.password.setAttribute('type', type);
+        this.togglePassword.querySelector('i').classList.toggle('fa-eye');
+        this.togglePassword.querySelector('i').classList.toggle('fa-eye-slash');
     }
 }
 

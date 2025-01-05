@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,18 +25,28 @@
             <form action="login" method="POST">
                 <div class="input-container">
                     <input name="email" type="email" placeholder="✉️ Email" autocomplete="on">
-                    <input name="password" type="password" placeholder="🔒 Password" autocomplete="off">
+                <div class="password-container"> 
+                    <input name="password" id="password" type="password" placeholder="🔒 Password" autocomplete="off">
+                    <span  id="togglePassword">
+                        <i class="fa-solid fa-eye"></i>
+                    </span>
+                </div>
                     <a class="forgotPassword" href="/reset-password">Forgot password?</a>
                 </div>
+
                 <div class="messages">
                     <?php 
-                if (isset($messages)) {
-                    foreach ($messages as $message) {
-                        echo $message;
-                    }
-                }
-                ?>
+                        if (isset($messages)) {
+                            foreach ($messages as $message) {
+                                echo $message;
+                            }
+                        }
+                        $message = $_GET['message'] ?? null;
+                        if (isset($message)): ?>
+                            <?= htmlspecialchars($message) ?>
+                    <?php endif; ?>
                 </div>
+
                 <button class="loginButton" type="submit">Login</button>
                 <a href="registration" class="register-link">Don't have an account? Register here</a>
 
@@ -58,5 +67,6 @@
             </form>
         </div>
     </div>
+    <script type="text/javascript" src="/js/PasswordValidator.js"></script>
 </body>
 </html>

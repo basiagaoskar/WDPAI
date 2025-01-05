@@ -4,7 +4,7 @@
     padding: 0;  
 }
 
-body {
+body { 
     font-family: 'Mulish', sans-serif;
 }
 
@@ -117,7 +117,7 @@ header {
     padding: 1em 2em;
 }
 
-.add-project {
+.add-workout {
     background-color: #EC2529;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 1.5em;
@@ -128,7 +128,7 @@ header {
     width: 20%;
 }
 
-.add-project>i {
+.add-workout>i {
     padding: 1em 1em;
 }
 
@@ -151,7 +151,7 @@ header {
     
 }
 
-section {
+.workouts {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 2em;
@@ -197,6 +197,69 @@ section {
     width: 1em;
 }
 
+.users {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.users table {
+    border-collapse: collapse;
+    width: 80%;
+}
+
+.users th, .users td {
+    border: 1px solid #acacac;
+    padding: 7px;
+    text-align: center;
+}
+
+.users th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-size: 1rem;
+}
+
+.users td:nth-child(6)>form {
+    min-width: 190px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+
+.users tr:hover {
+    background-color: #f1f1f1;
+}
+
+.users button {
+    background-color: #6f6dfc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 15px;
+}
+
+.users button:hover {
+    background-color: #9a98ff;
+}
+
+.users select {
+    padding: 5px;
+}
+
+.alert-success {
+    color: rgb(0, 184, 55);
+    text-align: center;
+    font-size: 2rem;
+}
+
+.alert-error {
+    color: rgb(255, 0, 55);
+    text-align: center;
+    font-size: 2rem;
+}
 
 @media (max-width: 1525px) {
     .logo-and-text h1{
@@ -211,11 +274,11 @@ section {
 
 @media (max-width: 1250px) {
 
-    section {
+    .workouts {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .add-project {
+    .add-workout {
         width: 30%;
     }
 
@@ -261,14 +324,14 @@ section {
     }
     
     .logo-and-text img{
-        width: 15rem;
+        width: 10rem;
     }
 
     li{
         display: none;
     }
 
-    section {
+    .workouts {
         grid-template-columns: 1fr; 
         
     }
@@ -279,5 +342,49 @@ section {
 
     .fa-heart {
         float: left;
+    }
+}
+
+
+@media (max-width: 900px) {
+    .users td:nth-child(6)>form {
+        min-width: 10px;
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 760px) {
+    .users td:nth-child(3), .users th:nth-child(3),
+    .users td:nth-child(4), .users th:nth-child(4) {
+        display: none;
+    }
+}
+
+@media (max-width: 580px) {
+    
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header .search-bar {
+        width: 100%;
+    }
+
+    .add-workout {
+        margin-top: 1em;
+        float: right;
+    }
+    
+    .logo-and-text h1{
+        margin: 0;
+    }
+    .logo-and-text img{
+        display: none;
+    }
+
+    .users td:nth-child(2), .users th:nth-child(2) {
+        display: none;
     }
 }
