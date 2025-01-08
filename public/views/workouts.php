@@ -5,44 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"/>
-    <link rel="icon" type="image/x-icon" href="../img/icon.ico">
+    <link rel="icon" type="image/x-icon" href="/public/public/img/icon.ico">
     <title>Workouts</title>
-    <link rel="stylesheet" type="text/css" href="/css/workouts-styles.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/main/nav-styles.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/main/workouts-styles.css">
 </head>
 <body>
     <div class="base-container">
         <nav>
             <div class="logo-and-text">
-                <h1>ZIUTKI<br>GYM</h1>
-                <img src="/img/logo.png" alt="Logo">
+                <h1>ZIUTKI GYM</h1>
+                <img src="/public/img/logo.png" alt="Logo">
             </div>
             <ul>
                 <li>
+                    <i class="fa-solid fa-user"></i>
+                    <a href="profile" class="nav-button">Profile</a>
+                </li>
+                <li>
                     <i class="fa-solid fa-dumbbell"></i>
-                    <a href="workouts" class="button">Workouts</a>
+                    <a href="workouts" class="nav-button">Workouts</a>
                 </li>
                 <li>
                     <i class="fa-solid fa-user-group"></i>
-                    <a href="#" class="button">Users</a>
+                    <a href="users" class="nav-button">Users</a>
                 </li>
                 <li>
                     <i class="fa-solid fa-bell"></i>
-                    <a href="#" class="button">Notifications</a>
+                    <a href="notifications" class="nav-button">Notifications</a>
                 </li>
                 <li>
                     <i class="fa-solid fa-gear"></i>
-                    <a href="#" class="button">Setting</a>
+                    <a href="setting" class="nav-button">Setting</a>
                 </li>
                 <?php if ($currentUser->getRole() === 'admin'): ?>
                 <li>
                     <i class="fa-solid fa-user-shield"></i>
-                    <a href="/adminPanel" class="button">Admin Panel</a>
+                    <a href="/adminPanel" class="nav-button">Admin Panel</a>
                 </li>
                 <?php endif; ?>
                 <li>
                     <i class="fa-solid fa-right-from-bracket"></i>
                     <form action="/logout" method="POST" style="display:inline;">
-                        <button type="submit" class="button">Logout</button>
+                        <button type="submit" class="nav-button">Logout</button>
                     </form>
                 </li>
             </ul>
@@ -61,7 +66,7 @@
             </header>
             <section class="workouts">
                 <div id="workout-1">
-                    <img src="/img/workouts/push-pull-legs.jpg">
+                    <img src="/public/img/workouts/push-pull-legs.jpg">
                     <div>
                         <h2>Push-Pull-Legs</h2>
                         <p>
@@ -81,7 +86,7 @@
                     </div>
                 </div>
                 <div id="workout-2">
-                    <img src="/img/workouts/upper-lower.webp">
+                    <img src="/public/img/workouts/upper-lower.webp">
                     <div>
                         <h2>Upper/Lower</h2>
                         <p>
@@ -100,7 +105,7 @@
                     </div>
                 </div>
                 <div id="workout-3">
-                    <img src="/img/workouts/fbw.jpg">
+                    <img src="/public/img/workouts/fbw.jpg">
                     <div>
                         <h2>Full Body</h2>
                         <p>
@@ -118,7 +123,7 @@
                     </div>
                 </div>
                 <div id="workout-4">
-                    <img src="/img/workouts/bro-split.jpg">
+                    <img src="/public/img/workouts/bro-split.jpg">
                     <div>
                         <h2>Bro Split</h2>
                         <p>
@@ -136,7 +141,7 @@
                     </div>
                 </div>
                 <div id="workout-5">
-                    <img src="/img/workouts/calisthenics.avif">
+                    <img src="/public/img/workouts/calisthenics.avif">
                     <div>
                         <h2>Calisthenics</h2>
                         <p>
@@ -154,7 +159,7 @@
                     </div>
                 </div>
                 <div id="workout-6">
-                    <img src="/img/workouts/functional_training.jpg">
+                    <img src="/public/img/workouts/functional_training.jpg">
                     <div>
                         <h2>Functional Training</h2>
                         <p>
@@ -172,7 +177,7 @@
                     </div>
                 </div>
                 <div id="workout-7">
-                    <img src="/img/workouts/powerlifting.jpg">
+                    <img src="/public/img/workouts/powerlifting.jpg">
                     <div>
                         <h2>Powerlifting</h2>
                         <p>

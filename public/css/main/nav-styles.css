@@ -1,0 +1,194 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;  
+}
+
+body { 
+    font-family: 'Mulish', sans-serif;
+}
+
+.base-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 80vw;
+}
+
+nav {
+    width: 20vw;
+    height: 98%;
+    background: transparent linear-gradient(180deg, #c7c6ff 0%, #6361ff 100%) 0% 0% no-repeat padding-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: 1px solid #FFFFFF;
+    border-radius: 2em;
+    max-width: 350px;
+    margin: 0 0 0 1vh;
+}
+
+nav>img {
+    width: 60%;
+    margin: 2em auto;
+}
+
+.logo-and-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-and-text h1{
+    font-family: 'Carter One', cursive;
+    font-size: 3rem;
+    margin-left: 1.5rem;
+    text-align: center;
+    line-height: 3.6rem;
+}
+
+.logo-and-text img{
+    width: 25%;
+    width: 10rem;
+}
+
+a{
+    text-decoration: none;
+    display: inline-block;
+    line-height: 2em;
+}
+
+ul {
+    list-style-type: none;
+    color: #FFFFFF;
+    height: 100%;
+    width: calc(100% - 40px);
+    position: relative;
+    margin: 3rem auto 0;
+    padding: 0;
+}
+
+li i {
+    font-size: 1.5em;
+}
+
+li {
+    text-align: left;
+    color: white;
+    margin-bottom: 1em;
+}
+
+li:last-child {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.nav-button {
+    border: 1px solid #FFFFFF;
+    border-radius: 1em;
+    margin-left: 1em;
+    text-align: center;
+    letter-spacing: 0.72px;
+    color: #FFFFFF;
+    padding: 0.2rem;
+    width: 60%;
+    font-size: 1em;
+    background: transparent; 
+    line-height: 2em;
+}
+
+.fa-solid{
+    width: 1em;
+}
+
+form>.nav-button{
+    cursor: pointer;
+}
+
+@media (max-width: 1525px) {
+    .logo-and-text h1{
+        font-size: 2.5rem;
+        line-height: 3rem;
+    }
+    
+    .logo-and-text img{
+        width: 8rem;
+    }
+}
+
+
+
+@media (max-width: 1250px) {
+    .logo-and-text h1{
+        font-size: 2rem;
+        line-height: 2.4rem;
+    }
+    
+    .logo-and-text img{
+        width: 6rem;
+    }
+}
+
+
+@media (max-width: 1020px) {
+    .base-container {
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    nav {
+        background: transparent linear-gradient(180deg, #c7c6ff 0%, #817ffc 100%) 0% 0% no-repeat padding-box;
+        height: 25%;
+        width: 100%;
+        max-width: 80%;
+        margin-top: 1rem;
+    }
+
+    .logo-and-text {
+        margin-top: 3%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .logo-and-text h1{
+        font-size: 4rem;
+        line-height: 4.8rem;
+    }
+    
+    .logo-and-text img{
+        width: 10rem;
+    }
+    li{
+        display: none;
+    }
+
+    .workouts {
+        grid-template-columns: 1fr; 
+        
+    }
+    
+    li:last-child {
+        position: relative;
+    }
+}
+
+
+
+@media (max-width: 580px) {
+    .logo-and-text h1{
+        margin: 0;
+    }
+    .logo-and-text img{
+        display: none;
+    }
+
+}

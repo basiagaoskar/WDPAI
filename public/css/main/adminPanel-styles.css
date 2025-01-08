@@ -1,0 +1,100 @@
+main h1 {
+    font-size: 4rem;
+    text-align: center;
+    margin: 2rem;
+}
+
+.users {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.users table {
+    border-collapse: collapse;
+    width: 80%;
+}
+
+.users th, .users td {
+    border: 1px solid #acacac;
+    padding: 7px;
+    text-align: center;
+}
+
+.users th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-size: 1rem;
+}
+
+.users td:nth-child(6)>form {
+    min-width: 190px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+
+.users tr:hover {
+    background-color: #f1f1f1;
+}
+
+.users button {
+    background-color: #6f6dfc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 15px;
+}
+
+.users button:hover {
+    background-color: #9a98ff;
+}
+
+.users select {
+    padding: 5px;
+}
+
+.alert-success {
+    color: rgb(0, 184, 55);
+    text-align: center;
+    font-size: 2rem;
+}
+
+.alert-error {
+    color: rgb(255, 0, 55);
+    text-align: center;
+    font-size: 2rem;
+}
+
+
+@media (max-width: 830px) {
+    
+    main h1 {
+        font-size: 3rem;
+    }
+    .users td:nth-child(6)>form {
+        min-width: 10px;
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 700px) {
+    .users td:nth-child(3), .users th:nth-child(3),
+    .users td:nth-child(4), .users th:nth-child(4) {
+        display: none;
+    }
+}
+
+
+@media (max-width: 580px) {
+    main h1 {
+        font-size: 2rem;
+    }
+
+    .users td:nth-child(2), .users th:nth-child(2) {
+        display: none;
+    }
+}

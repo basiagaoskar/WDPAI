@@ -95,4 +95,12 @@ class SecurityController extends AppController {
         $pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/';
         return preg_match($pattern, $password);
     }
+
+    public function main() {
+        $userRepository = new UserRepository();
+        $users = $userRepository->getAllUsers();
+        $currentUser = $userRepository->getUser($_SESSION['user_email']);
+        
+        return $this->render('main', ['users' => $users, 'currentUser' => $currentUser]);
+    }
 }

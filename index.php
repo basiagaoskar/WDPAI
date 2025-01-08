@@ -10,7 +10,7 @@ $timeout = 300;
 $path = trim($_SERVER['REQUEST_URI'], '/');
 $path = parse_url($path, PHP_URL_PATH);
 
-$protectedRoutes = ['workouts', 'adminPanel',''];
+$protectedRoutes = ['workouts', 'main', 'adminPanel'];
 
 if (in_array($path, $protectedRoutes)) {
     if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $timeout)) {
