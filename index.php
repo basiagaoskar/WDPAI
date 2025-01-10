@@ -28,16 +28,24 @@ if (in_array($path, $protectedRoutes)) {
     }
 }
 
-Routing::get('login', 'DefaultController');
-Routing::get('logout', 'SecurityController');
-Routing::get('registration', 'DefaultController');
-Routing::get('workouts', 'DefaultController');
 Routing::get('home', 'DefaultController');
+Routing::get('login', 'DefaultController');
+Routing::get('registration', 'DefaultController');
+
+Routing::get('logout', 'SecurityController');
+
+Routing::get('profile', 'NavigationController');
+Routing::get('workouts', 'NavigationController');
+
 Routing::get('adminPanel', 'AdminController');
+
 
 Routing::post('registration', 'SecurityController');
 Routing::post('login', 'SecurityController');
+
 Routing::post('changeRole', 'AdminController');
 Routing::post('deleteUser', 'AdminController');
+
+Routing::post('updateProfile', 'ProfileController');
 
 Routing::run($path);

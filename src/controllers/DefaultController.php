@@ -13,15 +13,6 @@ class DefaultController extends AppController{
         $this->render('registration');
     }
 
-    public function workouts() {
-        session_start();
-        $userRepository = new UserRepository();
-        $currentUser = $userRepository->getUser($_SESSION['user_email']);
-
-        return $this->render('workouts', ['currentUser' => $currentUser]);
-    
-    }
-
     public function home() {
         $this->render('home');
     }

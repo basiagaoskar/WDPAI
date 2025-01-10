@@ -5,8 +5,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/home-styles.css">
-    <link rel="icon" type="image/x-icon" href="../img/icon.ico">
+    <link rel="stylesheet" type="text/css" href="/public/css/home-styles.css">
+    <link rel="icon" type="image/x-icon" href="/img/icon.ico">
     <title>Home Page</title>
 </head>
 <body>
@@ -15,7 +15,7 @@
         <header>
                 <div class="logo-and-text">
                     <h1>ZIUTKI<br>GYM</h1>
-                    <img src="/img/logo.png" alt="Logo">
+                    <img src="/public/img/logo.png" alt="Logo">
                 </div>
                 <nav>
                     <ul>
@@ -34,7 +34,7 @@
                 <p>Join the best gym community and transform your life today!</p>
                 <button class="motivation-button">Join Now</button>
             </div>
-            <img src="/img/motivational.png" alt="Motivational Image">
+            <img src="/public/img/motivational.png" alt="Motivational Image">
 
         </section>
             

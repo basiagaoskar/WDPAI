@@ -25,7 +25,7 @@ class AdminController extends AppController{
         $users = $userRepository->getAllUsers();
         $currentUser = $userRepository->getUser($_SESSION['user_email']);
         
-        return $this->render('adminPanel', ['users' => $users, 'currentUser' => $currentUser]);
+        return $this->render('main/adminPanel', ['users' => $users, 'currentUser' => $currentUser]);
         
     }
     

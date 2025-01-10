@@ -81,4 +81,68 @@ class UserRepository extends Repository {
         $stmt->bindParam(':email', $email);
         return $stmt->execute();
     }
+
+    public function getProfileImage($email) {
+        $stmt = $this->database->connect()->prepare('
+            SELECT profile_picture 
+            FROM user_profiles up
+            JOIN users u ON up.user_id = u.id
+            WHERE u.email = :email
+        ');
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $result['profile_picture'];
+    }
+
+    public function getBio($email) {
+        $stmt = $this->database->connect()->prepare('
+            SELECT up.bio 
+            FROM users u
+            LEFT JOIN user_profiles up ON u.id = up.user_id
+            WHERE u.email = :email
+        ');
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $result ? $result['bio'] : null;
+    }
+
+    public function updateProfile($email, $name, $surname, $bio, $profileImage) {
+        $conn = $this->database->connect();
+        $conn->beginTransaction();
+        
+        try {
+            $stmt = $conn->prepare('
+                UPDATE users 
+                SET name = :name, surname = :surname 
+                WHERE email = :email
+            ');
+            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+            $stmt->bindParam(':surname', $surname, PDO::PARAM_STR);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $stmt = $conn->prepare('
+                UPDATE user_profiles 
+                SET bio = :bio, profile_picture = :profileImage 
+                WHERE user_id = (SELECT id FROM users WHERE email = :email)
+            ');
+            $stmt->bindParam(':bio', $bio, PDO::PARAM_STR);
+            $stmt->bindParam(':profileImage', $profileImage, PDO::PARAM_STR);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $conn->commit();
+            return true;
+        } catch (Exception $e) {
+            $conn->rollBack();
+            error_log("Failed to update profile: " . $e->getMessage());
+            return false;
+        }
+    }
 }
