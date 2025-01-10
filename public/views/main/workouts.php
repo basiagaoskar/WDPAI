@@ -9,6 +9,7 @@
     <title>Workouts</title>
     <link rel="stylesheet" type="text/css" href="/public/css/main/nav-styles.css">
     <link rel="stylesheet" type="text/css" href="/public/css/main/workouts-styles.css">
+    <script type="text/javascript" src="/public/js/search.js" defer></script>
 </head>
 <body>
     <div class="base-container">
@@ -55,147 +56,53 @@
         <main>
             <header>
                 <div class="search-bar">
-                    <form>
-                        <input placeholder="search">
-                    </form>
+                    <input placeholder="search workout" id="search-workout">
                 </div>
                 <div class="add-workout">
                     <i class="fas fa-plus"></i>
                     add 
                 </div>
             </header>
-            <section class="workouts">
-                <div id="workout-1">
-                    <img src="/public/img/workouts/push-pull-legs.jpg">
-                    <div>
-                        <h2>Push-Pull-Legs</h2>
-                        <p>
-                            Push: Training pushing muscles (chest, shoulders, triceps).<br>
-                            Pull: Training pulling muscles (back, biceps).<br>
-                            Legs: Training legs (quads, hamstrings, glutes, calves).
-                        </p>
-                        <div class="social-section">
-                            <i class="fas fa-heart"> 600</i>
-                            <div class="learn-more">
-                                <a href=""> 
-                                    Learn more
-                                    <i class="fa-solid fa-arrow-right "></i>
-                                </a>                                        
+            <section class="workouts" id="workout-container">
+                <?php foreach ($workouts as $workout): ?>
+                    <div id="workout-<?= $workout->id; ?>">
+                        <img src="public/img/workouts/<?= $workout->image; ?>">
+                        <div>
+                            <h2><?= $workout->title; ?></h2>
+                            <p><?= $workout->description; ?></p>
+                            <div class="social-section">
+                                <i class="fas fa-heart"> <?= $workout->likes; ?></i>
+                                <div class="learn-more">
+                                    <a href=""> 
+                                        Learn more
+                                        <i class="fa-solid fa-arrow-right "></i>
+                                    </a>                                        
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div id="workout-2">
-                    <img src="/public/img/workouts/upper-lower.webp">
-                    <div>
-                        <h2>Upper/Lower</h2>
-                        <p>
-                            Upper Body: Training the upper body (chest, back, shoulders, arms).<br>
-                            Lower Body: Training the lower body (legs, glutes).
-                        </p>
-                        <div class="social-section">
-                            <i class="fas fa-heart"> 600</i>
-                            <div class="learn-more">
-                                <a href=""> 
-                                    Learn more
-                                    <i class="fa-solid fa-arrow-right "></i>
-                                </a>                                        
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="workout-3">
-                    <img src="/public/img/workouts/fbw.jpg">
-                    <div>
-                        <h2>Full Body</h2>
-                        <p>
-                            A workout that targets all major muscle groups in one session.
-                        </p>
-                        <div class="social-section">
-                            <i class="fas fa-heart"> 600</i>
-                            <div class="learn-more">
-                                <a href=""> 
-                                    Learn more
-                                    <i class="fa-solid fa-arrow-right "></i>
-                                </a>                                        
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="workout-4">
-                    <img src="/public/img/workouts/bro-split.jpg">
-                    <div>
-                        <h2>Bro Split</h2>
-                        <p>
-                            Each muscle group is trained once per week (e.g., chest on Monday, back on Tuesday, legs on Wednesday, etc.).
-                        </p>
-                        <div class="social-section">
-                            <i class="fas fa-heart"> 600</i>
-                            <div class="learn-more">
-                                <a href=""> 
-                                    Learn more
-                                    <i class="fa-solid fa-arrow-right "></i>
-                                </a>                                        
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="workout-5">
-                    <img src="/public/img/workouts/calisthenics.avif">
-                    <div>
-                        <h2>Calisthenics</h2>
-                        <p>
-                            Focuses on exercises using your own body weight as resistance like pull-ups, push-ups, dips.
-                            <p>
-                        <div class="social-section">
-                            <i class="fas fa-heart"> 600</i>
-                            <div class="learn-more">
-                                <a href=""> 
-                                    Learn more
-                                    <i class="fa-solid fa-arrow-right "></i>
-                                </a>                                        
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="workout-6">
-                    <img src="/public/img/workouts/functional_training.jpg">
-                    <div>
-                        <h2>Functional Training</h2>
-                        <p>
-                            Focuses on movements that mimic daily activities or sports, emphasizing overall fitness.
-                        </p>
-                        <div class="social-section">
-                            <i class="fas fa-heart"> 600</i>
-                            <div class="learn-more">
-                                <a href=""> 
-                                    Learn more
-                                    <i class="fa-solid fa-arrow-right "></i>
-                                </a>                                        
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="workout-7">
-                    <img src="/public/img/workouts/powerlifting.jpg">
-                    <div>
-                        <h2>Powerlifting</h2>
-                        <p>
-                            Focuses on building maximal strength through three core compound movements: squat, bench press and deadlift, emphasizing power and technique.
-                        </p>
-                        <div class="social-section">
-                            <i class="fas fa-heart"> 600</i>
-                            <div class="learn-more">
-                                <a href=""> 
-                                    Learn more
-                                    <i class="fa-solid fa-arrow-right "></i>
-                                </a>                                        
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </section>
         </main>
     </div>
 </body>
 </html>
+
+<template id="workout-template">
+    <div id="">
+        <img src="">
+        <div>
+            <h2>title</h2>
+            <p>description</p>
+            <div class="social-section">
+                <i class="fas fa-heart"> 0</i>
+                <div class="learn-more">
+                    <a href=""> 
+                        Learn more
+                       <i class="fa-solid fa-arrow-right "></i>
+                    </a>                                        
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

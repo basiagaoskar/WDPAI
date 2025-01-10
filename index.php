@@ -47,5 +47,6 @@ Routing::post('changeRole', 'AdminController');
 Routing::post('deleteUser', 'AdminController');
 
 Routing::post('updateProfile', 'ProfileController');
+Routing::post('search', 'WorkoutsController');
 
 Routing::run($path);

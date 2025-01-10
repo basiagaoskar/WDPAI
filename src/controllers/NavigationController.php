@@ -2,6 +2,7 @@
 
 require_once 'AppController.php';
 require_once __DIR__.'/../repository/UserRepository.php';
+require_once __DIR__.'/../repository/WorkoutRepository.php';
 
 class NavigationController extends AppController {
     private $userRepository;
@@ -17,7 +18,9 @@ class NavigationController extends AppController {
     }
 
     public function workouts() {
-        return $this->render('main/workouts', ['currentUser' => $this->currentUser]);
+        $workoutRepository = new WorkoutRepository();
+        $workouts = $workoutRepository->getAllWorkouts();
+        return $this->render('main/workouts', ['currentUser' => $this->currentUser, 'workouts' => $workouts]);
     }
 
     public function profile() {
