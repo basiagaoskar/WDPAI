@@ -6,10 +6,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"/>
     <link rel="icon" type="image/x-icon" href="/public/public/img/icon.ico">
-    <title>Workouts</title>
+    <title>Create Workout</title>
     <link rel="stylesheet" type="text/css" href="/public/css/main/nav-styles.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/main/workouts-styles.css">
-    <script type="text/javascript" src="/public/js/search.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="/public/css/main/createWorkout-styles.css">
 </head>
 <body>
     <div class="base-container">
@@ -54,54 +53,40 @@
             </ul>
         </nav>
         <main>
-            <header>
-                <div class="search-bar">
-                    <input placeholder="search workout" id="search-workout">
-                </div>
-                    <a href="createWorkout" class="add-workout"> 
-                        <i class="fas fa-plus"></i>add workout
-                    </a>
-            </header>
-            <section class="workouts" id="workout-container">
-                <?php foreach ($workouts as $workout): ?>
-                    <div id="workout-<?= $workout->id; ?>">
-                        <img src="public/img/workouts/<?= $workout->image; ?>">
-                        <div>
-                            <h2><?= $workout->title; ?></h2>
-                            <p><?= $workout->description; ?></p>
-                            <div class="social-section">
-                                <i class="fas fa-heart"> <?= $workout->likes; ?></i>
-                                <div class="learn-more">
-                                    <a href=""> 
-                                        Learn more
-                                        <i class="fa-solid fa-arrow-right "></i>
-                                    </a>                                        
+            <section class="create-workout">
+                <header>
+                    <h1>Create Workout</h1>
+                </header>
+                <form action="/addWorkout" method="POST" enctype="multipart/form-data">
+                    <label for="title" class="main-label">Title:</label>
+                    <input type="text" id="title" name="title" required placeholder="Enter workout title">
+                    
+                    <label for="description" class="main-label">Description:</label>
+                    <textarea id="description" name="description" required placeholder="Enter description"></textarea>
+                    
+                    <label for="image" class="main-label">Image:</label>
+                    <input type="file" id="image" name="image" required>
+                    
+                    <label for="exercises" class="main-label">Exercises:</label>
+                    <div class="scrollable-exercises">
+                        <div class="exercises-container">
+                            <?php foreach ($exercises as $exercise): ?>
+                                <div class="exercise-block">
+                                    <input type="checkbox" id="exercise-<?= $exercise->id ?>" name="exercises[]" value="<?= $exercise->id ?>">
+                                    <label for="exercise-<?= $exercise->id ?>">
+                                        <img src="public/img/exercises/<?= $exercise->image ?>" alt="<?= $exercise->name ?>">
+                                        <h3><?= $exercise->name ?></h3>
+                                        <p><strong>Muscle Group:</strong> <?= $exercise->muscle_group ?></p>
+                                        <p><strong>Instruction:</strong> <?= $exercise->instruction ?></p>
+                                    </label>
                                 </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
-                <?php endforeach; ?>
+                    <button type="submit">Add Workout</button>
+                </form>
             </section>
         </main>
     </div>
 </body>
 </html>
-
-<template id="workout-template">
-    <div id="">
-        <img src="">
-        <div>
-            <h2>title</h2>
-            <p>description</p>
-            <div class="social-section">
-                <i class="fas fa-heart"> 0</i>
-                <div class="learn-more">
-                    <a href=""> 
-                        Learn more
-                       <i class="fa-solid fa-arrow-right "></i>
-                    </a>                                        
-                </div>
-            </div>
-        </div>
-    </div>
-</template>

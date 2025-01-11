@@ -28,4 +28,10 @@ class NavigationController extends AppController {
         $bio = $this->userRepository->getBio($_SESSION['user_email']);
         return $this->render('main/profile', ['currentUser' => $this->currentUser, 'profileImage' => $profileImage, 'bio' => $bio]);
     }
+
+    public function createWorkout() {
+        $workoutRepository = new WorkoutRepository();
+        $exercises = $workoutRepository->getAllExercises();
+        return $this->render('main/createWorkout', ['currentUser' => $this->currentUser, 'exercises' => $exercises]);
+    }
 }
