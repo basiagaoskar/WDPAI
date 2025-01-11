@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"/>
     <link rel="icon" type="image/x-icon" href="/img/icon.ico">
-    <title>Admin Panel</title>
+    <title>Profile</title>
     <link rel="stylesheet" type="text/css" href="/public/css/main/nav-styles.css">
     <link rel="stylesheet" type="text/css" href="/public/css/main/profile-styles.css">
 </head>

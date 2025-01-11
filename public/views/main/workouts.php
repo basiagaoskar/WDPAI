@@ -58,10 +58,9 @@
                 <div class="search-bar">
                     <input placeholder="search workout" id="search-workout">
                 </div>
-                <div class="add-workout">
-                    <i class="fas fa-plus"></i>
-                    add 
-                </div>
+                    <a href="createWorkout" class="add-workout"> 
+                        <i class="fas fa-plus"></i>add workout
+                    </a>
             </header>
             <section class="workouts" id="workout-container">
                 <?php foreach ($workouts as $workout): ?>

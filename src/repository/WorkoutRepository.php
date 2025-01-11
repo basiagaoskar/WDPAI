@@ -24,4 +24,13 @@ class WorkoutRepository extends Repository {
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getAllExercises() {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM exercises ORDER BY muscle_group
+        ');
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
 }

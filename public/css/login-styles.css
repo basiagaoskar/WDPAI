@@ -5,6 +5,10 @@
 }
 
 body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
     font-family: 'Mulish', sans-serif;
 }
 
@@ -12,14 +16,12 @@ body {
     display: flex;
     flex-wrap: wrap;
     width: 90%;
-    max-width: 2300px;
-    max-height: 820px;
     margin: 5vh auto;
     border: 2px solid #000;
     border-radius: 3rem;
     overflow: hidden;
 }
-
+ 
 .left {
     flex: 1;
     background: #C6C5FF;

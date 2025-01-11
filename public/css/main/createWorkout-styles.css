@@ -1,0 +1,100 @@
+.create-workout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 5rem;
+}
+
+header h1 {
+    text-align: center;
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 3rem;
+}
+
+.create-workout form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.create-workout form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.main-label {
+    font-size: 1.5rem;
+}
+
+.create-workout input[type="text"], 
+.create-workout input[type="file"], 
+.create-workout textarea, 
+.create-workout select {
+    margin-bottom: 2rem;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 90%;
+    max-width: 700px;
+}
+
+.create-workout form button {
+    padding: 2rem;
+    font-size: 2rem;
+    background-color: #333;
+    color: white;
+    width: 25%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.create-workout form button:hover {
+    background-color: #555;
+}
+
+.scrollable-exercises {
+    height: 35vh;
+    overflow-y: auto; /* Scroll pionowy */
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    margin-bottom: 2rem;
+}
+
+.exercises-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.exercise-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 260px;
+    text-align: center;
+    background-color: white;
+}
+
+.exercise-block input[type="checkbox"] {
+    margin-bottom: 1rem;
+}
+
+.exercise-block img {
+    width: 200px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.exercise-block p {
+    font-weight: 400;
+    margin-top: 5px;
+}
