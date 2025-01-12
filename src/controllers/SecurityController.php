@@ -34,6 +34,7 @@ class SecurityController extends AppController {
             session_regenerate_id();
             $_SESSION['loggedin'] = true;
             $_SESSION['user_email'] = $user->getEmail();
+            $_SESSION['user_id'] = $user->getId();
 
             header("Location: /workouts");
             exit;

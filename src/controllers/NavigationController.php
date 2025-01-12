@@ -21,9 +21,7 @@ class NavigationController extends AppController {
         $workoutRepository = new WorkoutRepository();
 
         $basicWorkouts = $workoutRepository->getAllBasicWorkouts();
-
-        $userId = $this->currentUser->getId();
-        $userWorkouts = $workoutRepository->getUserWorkouts($userId);
+        $userWorkouts = $workoutRepository->getUserWorkouts( $_SESSION['user_id']);
     
         $workouts = array_merge($basicWorkouts, $userWorkouts);
         return $this->render('main/workouts', ['currentUser' => $this->currentUser, 'workouts' => $workouts]);

@@ -16,7 +16,20 @@ class WorkoutsController extends AppController {
             http_response_code(200);
 
             $workoutRepository = new WorkoutRepository();
-            echo json_encode($workoutRepository->getWorkoutByTitle($decoded['search']));
+            $workouts = $workoutRepository->getWorkoutByTitle($decoded['search']);
+
+
+            $response = array_map(function($workout) {
+                return [
+                    'id' => $workout->getId(),
+                    'title' => $workout->getTitle(),
+                    'description' => $workout->getDescription(),
+                    'user_id' => $workout->getUserId(),
+                    'image' => $workout->getImage()
+                ];
+            }, $workouts);
+
+            echo json_encode($response);
         }
     }
 
@@ -26,7 +39,7 @@ class WorkoutsController extends AppController {
             $description = $_POST['description'];
             $image = $_FILES['image']['name'];
             $target = "public/img/workouts/".basename($image);
-            $userId = $_POST['userId'];
+            $userId = $_SESSION['user_id'];
 
             move_uploaded_file($_FILES['image']['tmp_name'], $target);
 

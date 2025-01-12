@@ -64,13 +64,12 @@
             </header>
             <section class="workouts" id="workout-container">
                 <?php foreach ($workouts as $workout): ?>
-                    <div id="workout-<?= $workout->id; ?>">
-                        <img src="public/img/workouts/<?= $workout->image; ?>">
+                    <div id="workout-<?= $workout->getId(); ?>">
+                        <img src="public/img/workouts/<?= $workout->getImage(); ?>">
                         <div>
-                            <h2><?= $workout->title; ?></h2>
-                            <p><?= $workout->description; ?></p>
+                            <h2><?= $workout->getTitle(); ?></h2>
+                            <p><?= $workout->getDescription(); ?></p>
                             <div class="social-section">
-                                <i class="fas fa-heart"> <?= $workout->likes; ?></i>
                                 <div class="learn-more">
                                     <a href=""> 
                                         Learn more
@@ -94,7 +93,6 @@
             <h2>title</h2>
             <p>description</p>
             <div class="social-section">
-                <i class="fas fa-heart"> 0</i>
                 <div class="learn-more">
                     <a href=""> 
                         Learn more

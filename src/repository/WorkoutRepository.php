@@ -1,6 +1,7 @@
 <?php
 
 require_once 'Repository.php';
+require_once __DIR__ . '/../models/Workout.php';
 
 class WorkoutRepository extends Repository {
     public function getAllBasicWorkouts() {
@@ -9,20 +10,43 @@ class WorkoutRepository extends Repository {
         ');
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
+        $workouts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return array_map(function($workout) {
+            return new Workout(
+                $workout['id'],
+                $workout['title'],
+                $workout['description'],
+                null,
+                $workout['image']
+            );
+        }, $workouts);
     }
 
-    public function getWorkoutByTitle(string $searchString)
-    {
+    public function getWorkoutByTitle(string $searchString) {
         $searchString = '%' . strtolower($searchString) . '%';
-
+    
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM basic_workouts WHERE LOWER(title) LIKE :search OR LOWER(description) LIKE :search
+            SELECT id, title, description, NULL as user_id, image, 1 as sort_order FROM basic_workouts 
+            WHERE LOWER(title) LIKE :search OR LOWER(description) LIKE :search
+            UNION
+            SELECT id, title, description, user_id, image, 2 as sort_order FROM workouts 
+            WHERE (LOWER(title) LIKE :search OR LOWER(description) LIKE :search) AND user_id = :userId
+            ORDER BY sort_order, id
         ');
         $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
+        $stmt->bindParam(':userId',  $_SESSION['user_id'], PDO::PARAM_INT);
         $stmt->execute();
-
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        $workouts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return array_map(function($workout) {
+            return new Workout(
+                $workout['id'],
+                $workout['title'],
+                $workout['description'],
+                $workout['user_id'],
+                $workout['image']
+            );
+        }, $workouts);
     }
 
     public function getAllExercises() {
@@ -47,8 +71,6 @@ class WorkoutRepository extends Repository {
         $stmt->execute();
         return $stmt->fetchColumn();
     }
-    
-    
 
     public function addExerciseToWorkout($workoutId, $exerciseId) {
         $stmt = $this->database->connect()->prepare('
@@ -65,7 +87,16 @@ class WorkoutRepository extends Repository {
         ');
         $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
         $stmt->execute();
-    
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
+
+        $workouts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return array_map(function($workout) {
+            return new Workout(
+                $workout['id'],
+                $workout['title'],
+                $workout['description'],
+                $workout['user_id'],
+                $workout['image']
+            );
+        }, $workouts);
     }
 }

@@ -42,8 +42,6 @@ function createProject(workout) {
     title.innerHTML = workout.title;
     const description = clone.querySelector("p");
     description.innerHTML = workout.description;
-    const likes = clone.querySelector(".fa-heart");
-    likes.innerText = ` ${workout.likes}`;
 
     workoutContainer.appendChild(clone);
 }

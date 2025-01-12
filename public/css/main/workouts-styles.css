@@ -70,14 +70,13 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-.workouts .fa-heart {
-    color: red
+    position: relative;
 }
 
 .learn-more {
-    float: right;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }
 
 

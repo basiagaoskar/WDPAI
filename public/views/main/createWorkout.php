@@ -58,7 +58,6 @@
                     <h1>Create Workout</h1>
                 </header>
                 <form action="/addWorkout" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="userId" value="<?= $currentUser->getId(); ?>">
                     <label for="title" class="main-label">Title:</label>
                     <input type="text" id="title" name="title" required placeholder="Enter workout title">
                     
