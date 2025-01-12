@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"/>
-    <link rel="icon" type="image/x-icon" href="/public/public/img/icon.ico">
-    <title>Workouts</title>
+    <link rel="icon" type="image/x-icon" href="/img/icon.ico">
+    <title>Users</title>
     <link rel="stylesheet" type="text/css" href="/public/css/main/nav-styles.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/main/workouts-styles.css">
-    <script type="text/javascript" src="/public/js/search.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="/public/css/main/users-styles.css">
 </head>
 <body>
     <div class="base-container">
@@ -21,7 +20,7 @@
             <ul>
                 <li>
                     <i class="fa-solid fa-user"></i>
-                    <a href="profile" class="nav-button">Profile</a>
+                    <a href="/profile" class="nav-button">Profile</a>
                 </li>
                 <li>
                     <i class="fa-solid fa-dumbbell"></i>
@@ -54,30 +53,12 @@
             </ul>
         </nav>
         <main>
-            <header>
-                <div class="search-bar">
-                    <input placeholder="search workout" id="search-workout">
-                </div>
-                    <a href="createWorkout" class="add-workout"> 
-                        <i class="fas fa-plus"></i>add workout
-                    </a>
-            </header>
-            <section class="workouts" id="workout-container">
-                <?php foreach ($workouts as $workout): ?>
-                    <div id="workout-<?= $workout->getId(); ?>">
-                        <img src="public/img/workouts/<?= $workout->getImage(); ?>">
-                        <div>
-                            <h2><?= $workout->getTitle(); ?></h2>
-                            <p><?= $workout->getDescription(); ?></p>
-                            <div class="social-section">
-                                <div class="learn-more">
-                                    <a href="viewWorkout/<?= $workout->getId(); ?>"> 
-                                        See details
-                                        <i class="fa-solid fa-arrow-right "></i>
-                                    </a>                                        
-                                </div>
-                            </div>
-                        </div>
+            <section class="users-section">
+                <?php foreach ($users as $user): ?>
+                    <div class="user-card">
+                        <img src="/public/uploads/<?= $user['profile_picture'] ?>" alt="Profile Image">
+                        <h2><?= $user['name'] . ' ' . $user['surname'] ?></h2>
+                        <p><?= $user['bio'] ?></p>
                     </div>
                 <?php endforeach; ?>
             </section>
@@ -85,21 +66,3 @@
     </div>
 </body>
 </html>
-
-<template id="workout-template">
-    <div id="">
-        <img src="">
-        <div>
-            <h2>title</h2>
-            <p>description</p>
-            <div class="social-section">
-                <div class="learn-more">
-                    <a href=""> 
-                        See details
-                       <i class="fa-solid fa-arrow-right "></i>
-                    </a>                                        
-                </div>
-            </div>
-        </div>
-    </div>
-</template>

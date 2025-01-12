@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"/>
-    <link rel="icon" type="image/x-icon" href="/public/public/img/icon.ico">
-    <title>Workouts</title>
+    <link rel="icon" type="image/x-icon" href="/public/img/icon.ico">
+    <title>Workout Details</title>
     <link rel="stylesheet" type="text/css" href="/public/css/main/nav-styles.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/main/workouts-styles.css">
-    <script type="text/javascript" src="/public/js/search.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="/public/css/main/viewWorkout-styles.css">
+    <base href="http://localhost:8080/">
 </head>
 <body>
     <div class="base-container">
@@ -54,52 +54,25 @@
             </ul>
         </nav>
         <main>
-            <header>
-                <div class="search-bar">
-                    <input placeholder="search workout" id="search-workout">
-                </div>
-                    <a href="createWorkout" class="add-workout"> 
-                        <i class="fas fa-plus"></i>add workout
-                    </a>
-            </header>
-            <section class="workouts" id="workout-container">
-                <?php foreach ($workouts as $workout): ?>
-                    <div id="workout-<?= $workout->getId(); ?>">
-                        <img src="public/img/workouts/<?= $workout->getImage(); ?>">
-                        <div>
-                            <h2><?= $workout->getTitle(); ?></h2>
-                            <p><?= $workout->getDescription(); ?></p>
-                            <div class="social-section">
-                                <div class="learn-more">
-                                    <a href="viewWorkout/<?= $workout->getId(); ?>"> 
-                                        See details
-                                        <i class="fa-solid fa-arrow-right "></i>
-                                    </a>                                        
+            <section class="viewWorkout-section">
+                <h1><?= $workoutTitle ?></h1>
+                <h2>Exercises</h2>
+                <section class="exercises-section">
+                    <div class="scrollable-exercises">
+                        <div class="exercises-container">
+                            <?php foreach ($exercises as $exercise): ?>
+                                <div class="exercise-card">
+                                    <img src="/public/img/exercises/<?= $exercise['image'] ?>" alt="Exercise Image">
+                                    <h3><?= $exercise['name'] ?></h3>
+                                    <p><?= $exercise['description'] ?></p>
+                                    <p><strong>Muscle Group:</strong> <?= $exercise['muscle_group'] ?></p>
                                 </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
-                <?php endforeach; ?>
+                </section>
             </section>
         </main>
     </div>
 </body>
 </html>
-
-<template id="workout-template">
-    <div id="">
-        <img src="">
-        <div>
-            <h2>title</h2>
-            <p>description</p>
-            <div class="social-section">
-                <div class="learn-more">
-                    <a href=""> 
-                        See details
-                       <i class="fa-solid fa-arrow-right "></i>
-                    </a>                                        
-                </div>
-            </div>
-        </div>
-    </div>
-</template>

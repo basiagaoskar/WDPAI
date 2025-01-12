@@ -38,4 +38,9 @@ class NavigationController extends AppController {
         $exercises = $workoutRepository->getAllExercises();
         return $this->render('main/createWorkout', ['currentUser' => $this->currentUser, 'exercises' => $exercises]);
     }
+
+    public function users() {
+        $users = $this->userRepository->getUsersProfiles('user');
+        return $this->render('main/users', ['currentUser' => $this->currentUser, 'users' => $users]);
+    }
 }

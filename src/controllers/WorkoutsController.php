@@ -2,6 +2,8 @@
 
 require_once 'AppController.php';
 require_once __DIR__.'/../repository/WorkoutRepository.php';
+require_once __DIR__.'/../repository/UserRepository.php';
+
 
 class WorkoutsController extends AppController {
 
@@ -53,5 +55,20 @@ class WorkoutsController extends AppController {
 
             header("Location: /workouts");
         }
+    }
+
+    public function viewWorkout($id) {
+        if (!is_numeric($id)) {
+            header("Location: /workouts");
+            exit();
+        }
+        $userRepository = new UserRepository();
+        $currentUser = $userRepository->getUser($_SESSION['user_email']);
+        
+        $workoutRepository = new WorkoutRepository();
+        $exercises = $workoutRepository->getExercisesByWorkoutId($id);
+        $workoutTitle = $workoutRepository->getWorkoutTitle($id);
+    
+        return $this->render('main/viewWorkout', ['currentUser' => $currentUser, 'exercises' => $exercises, 'workoutTitle' => $workoutTitle['title']]);
     }
 }

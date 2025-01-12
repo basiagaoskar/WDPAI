@@ -58,6 +58,28 @@ class WorkoutRepository extends Repository {
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function getWorkoutTitle($id) {
+        $stmt = $this->database->connect()->prepare('
+            SELECT title FROM workouts WHERE id = :id
+        ');
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    public function getExercisesByWorkoutId($workoutId) {
+        $stmt = $this->database->connect()->prepare('
+            SELECT e.id, e.name, e.muscle_group, e.instruction, e.image 
+            FROM exercises e
+            JOIN workout_exercises we ON e.id = we.exercise_id
+            WHERE we.workout_id = :workoutId
+        ');
+        $stmt->bindParam(':workoutId', $workoutId, PDO::PARAM_INT);
+        $stmt->execute();
+    
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function addWorkout($title, $description, $userId, $image) {
         $stmt = $this->database->connect()->prepare('
             INSERT INTO workouts (title, description, user_id, image) 

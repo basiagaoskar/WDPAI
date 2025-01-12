@@ -1,0 +1,87 @@
+.viewWorkout-section{
+    margin: 4rem;
+    text-align: center;
+}
+
+.viewWorkout-section h1 {
+    font-size: 5rem;
+    margin-bottom: 7rem;
+}
+
+.viewWorkout-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.scrollable-exercises {
+    height: 55vh;
+    width: 60vw;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    margin: auto;
+    margin-bottom: 2rem;
+    text-align: center;
+    justify-content: center;
+}
+.exercises-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+
+.exercise-card {
+    border: 1px solid #ddd;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 20rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.exercise-card img {
+    width: 10vw;
+    max-width: 190px;
+    min-width: 100px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.exercise-card h3 {
+    font-size: 1.5em;
+    margin: 10px 0;
+    color: #333;
+}
+
+.exercise-card p {
+    font-size: 1em;
+    color: #666;
+}
+
+.exercise-card p strong {
+    color: #333;
+}
+
+@media (max-width: 1440px) {
+    .exercise-card {
+        width: 15rem;
+    }
+
+}
+
+@media (max-width: 1020px) {
+
+    .viewWorkout-section {
+        margin: 2rem 0 0 0;
+    }
+
+    .scrollable-exercises {
+        width: 80vw;
+    }
+}

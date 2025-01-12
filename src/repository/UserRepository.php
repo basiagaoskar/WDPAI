@@ -62,6 +62,19 @@ class UserRepository extends Repository {
         return $users;
     }
 
+    public function getUsersProfiles($type) {
+        $stmt = $this->database->connect()->prepare('
+            SELECT users.name, users.surname, user_profiles.bio, user_profiles.profile_picture
+            FROM users
+            LEFT JOIN user_profiles ON users.id = user_profiles.user_id
+            WHERE users.role = :role;
+        ');
+        $stmt->bindParam(':role', $type, PDO::PARAM_STR);
+        $stmt->execute();
+    
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function deleteUserByEmail(string $email): bool
     {
         $stmt = $this->database->connect()->prepare('
