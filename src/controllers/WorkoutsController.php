@@ -19,4 +19,26 @@ class WorkoutsController extends AppController {
             echo json_encode($workoutRepository->getWorkoutByTitle($decoded['search']));
         }
     }
+
+    public function addWorkout() {
+        if ($this->isPost()) {
+            $title = $_POST['title'];
+            $description = $_POST['description'];
+            $image = $_FILES['image']['name'];
+            $target = "public/img/workouts/".basename($image);
+            $userId = $_POST['userId'];
+
+            move_uploaded_file($_FILES['image']['tmp_name'], $target);
+
+            $workoutRepository = new WorkoutRepository();
+            $workoutId = $workoutRepository->addWorkout($title, $description, $userId, $image);
+
+            $exercises = $_POST['exercises'];
+            foreach ($exercises as $exerciseId) {
+                $workoutRepository->addExerciseToWorkout($workoutId, $exerciseId);
+            }
+
+            header("Location: /workouts");
+        }
+    }
 }

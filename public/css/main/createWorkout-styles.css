@@ -45,7 +45,7 @@ header h1 {
     font-size: 2rem;
     background-color: #333;
     color: white;
-    width: 25%;
+    width: 35%;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -77,7 +77,6 @@ header h1 {
     flex-direction: column;
     align-items: center;
     border: 1px solid #ccc;
-    border-radius: 5px;
     padding: 10px;
     width: 260px;
     text-align: center;
@@ -91,10 +90,84 @@ header h1 {
 .exercise-block img {
     width: 200px;
     height: auto;
-    border-radius: 5px;
 }
 
 .exercise-block p {
     font-weight: 400;
     margin-top: 5px;
+}
+
+@media  (max-width: 1024px) {
+    .create-workout {
+        padding: 2rem;
+    }
+
+    .create-workout form button {
+        width: 50%;
+    }
+
+    .scrollable-exercises {
+        height: 40vh;
+    }
+
+    .exercise-block {
+        width: 30%;
+    }
+
+    .exercise-block img {
+        width: 150px;
+    }
+
+}
+
+@media  (max-width: 768px) {
+    .exercise-block {
+        width: 45%;
+    }
+
+    .exercise-block img {
+        width: 100px;
+    }
+
+    .exercise-block label p {
+        display: none;
+    }
+
+    .create-workout form button {
+        width: 60%;
+    }
+}
+
+@media  (max-width: 620px) {
+
+    header h1 {
+    font-size: 2.5rem;
+    }
+
+    .exercise-block {
+        width: 100%;
+    }
+
+    .exercise-block img {
+        display: none
+    }
+
+    .exercise-block {
+        flex-direction: row;
+    }
+
+    .exercise-block input[type="checkbox"] {
+        margin: auto 5px auto 0;
+    }
+
+    .create-workout form label {
+        margin:  0;
+    }
+    
+    .create-workout form button {
+        font-size: 1.5rem;
+        padding: 1rem;
+        width: 70%;
+    }
+    
 }

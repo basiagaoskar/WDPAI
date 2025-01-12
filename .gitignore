@@ -1,4 +1,15 @@
 .vscode
 
+#basic profile pciture
 public/uploads/*
 !public/uploads/default.jpg
+
+#basic workouts
+public/img/workouts/*
+!public/img/workouts/bro-split.jpg
+!public/img/workouts/Calisthenics.avif
+!public/img/workouts/fbw.jpg
+!public/img/workouts/functional_training.jpg
+!public/img/workouts/powerlifting.jpg
+!public/img/workouts/push-pull-legs.jpg
+!public/img/workouts/upper-lower.webp
