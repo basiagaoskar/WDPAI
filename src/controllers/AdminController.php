@@ -18,7 +18,8 @@ class AdminController extends AppController{
 
     public function adminPanel() {
         if (!$this->checkPermission(['admin'])) {
-            return $this->render('login', ['messages' => ['Access denied!']]);
+            header('Location: /error/403');
+            exit;
         }
     
         $userRepository = new UserRepository();
@@ -56,7 +57,7 @@ class AdminController extends AppController{
     
     public function changeRole() {
         if (!$this->checkPermission(['admin'])) {
-            header('Location: /login?message=Access Denied');
+            header('Location: /error/403');
             exit;
         }
     

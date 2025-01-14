@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;  
+}
+
+body {
+    font-family: 'Carter One', cursive;
+    text-align: center;
+    color: #333;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.error-code {
+    font-size: 10rem;
+    margin: 0;
+}
+
+.message {
+    font-size: 2rem;
+}
+
+.home-link {
+    margin-top: 1rem;
+    text-decoration: none;
+    color: #007BFF;
+    font-size: 1.5rem;
+}
+
+.home-link:hover {
+    text-decoration: underline;
+}
+
+img {
+    width: 20rem;
+}
+
+@media (max-width: 405px) {
+    .error-code {
+        font-size: 6rem;
+    }
+
+    .message {
+        font-size: 1.5rem;
+    }
+
+    img {
+        width: 15rem;
+    }
+}

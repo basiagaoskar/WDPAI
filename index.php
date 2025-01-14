@@ -6,7 +6,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$timeout = 3000; 
+$timeout = 300; 
 $path = trim($_SERVER['REQUEST_URI'], '/');
 $path = parse_url($path, PHP_URL_PATH);
 
@@ -23,7 +23,7 @@ if (in_array($path, $protectedRoutes) || preg_match('/^workouts\/\d+$/', $path))
     $_SESSION['last_activity'] = time();
 
     if (!isset($_SESSION['loggedin'])) {
-        header('Location: /login?message=Login Required');
+        header('Location: /error/403');
         exit;
     }
 }
@@ -31,6 +31,7 @@ if (in_array($path, $protectedRoutes) || preg_match('/^workouts\/\d+$/', $path))
 Routing::get('home', 'DefaultController');
 Routing::get('login', 'DefaultController');
 Routing::get('registration', 'DefaultController');
+Routing::get('error', 'DefaultController');
 
 Routing::get('logout', 'SecurityController');
 

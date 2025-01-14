@@ -23,7 +23,8 @@ class Routing {
             $action = $urlParts[0];
     
             if (!array_key_exists($action, self::$routes)) {
-                die("Wrong url!");
+                header('Location: /error/404');
+                exit();
             }
     
             $controller = self::$routes[$action];
