@@ -158,4 +158,68 @@ class UserRepository extends Repository {
             return false;
         }
     }
+
+    public function verifyPassword(string $email, string $password){
+        $stmt = $this->database->connect()->prepare('
+            SELECT password FROM users WHERE email = :email
+        ');
+
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $hashedPassword = $stmt->fetch(PDO::FETCH_ASSOC)['password'];
+
+        return password_verify($password, $hashedPassword);
+    }
+
+    public function updatePassword(string $email, string $newPassword) {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE users
+            SET password = :password
+            WHERE email = :email
+        ');
+
+        $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
+        $stmt->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+
+        return $stmt->execute();
+    }
+
+    public function updateEmail(string $currentEmail, string $newEmail) {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE users
+            SET email = :newEmail
+            WHERE email = :currentEmail
+        ');
+
+        $stmt->bindParam(':newEmail', $newEmail, PDO::PARAM_STR);
+        $stmt->bindParam(':currentEmail', $currentEmail, PDO::PARAM_STR);
+
+        return $stmt->execute();
+    }
+
+    public function deleteUser(string $email)   {
+        $stmt = $this->database->connect()->prepare('
+            DELETE FROM users
+            WHERE email = :email
+        ');
+
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+
+        return $stmt->execute();
+    }
+
+    public function updateVisibility($email, $visibility) {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE user_profiles
+            SET visibility = :visibility
+            WHERE user_id = (SELECT id FROM users WHERE email = :email)
+        ');
+
+        $stmt->bindParam(':visibility', $visibility, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+
+        return $stmt->execute();
+    }
 }

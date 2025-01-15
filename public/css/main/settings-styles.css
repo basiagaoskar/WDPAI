@@ -1,0 +1,90 @@
+.settings-container {
+    padding: 4rem;
+    margin: auto;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.settings-container header {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.settings-section {
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-top: 0.3rem;
+    margin-bottom: 1rem;
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+input, select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.settings-section button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #6361ff;
+    color: white;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.settings-section button:hover {
+    background-color: #817ffc;
+}
+
+.settings-section:nth-of-type(3) button {
+    background-color: #ff4d4d;
+}
+
+.settings-section:nth-of-type(3) button:hover {
+    background-color: #ff6a6a;
+}
+
+.alert-success {
+    text-align: center;
+    font-size: 2rem;
+    color: rgb(0, 184, 55);
+}
+
+.alert-error {
+    text-align: center;
+    font-size: 2rem;
+    color: rgb(255, 0, 55);
+
+}
+
+@media (max-width: 500px) {
+    .settings-container {
+        padding: 2rem;
+    }
+
+    .settings-section {
+        margin-top: 3rem;
+    }
+
+    .settings-section button {
+        font-size: 1.2rem;
+    }
+
+    .alert-error, .alert-success {
+        font-size: 1.5rem;
+    }
+}

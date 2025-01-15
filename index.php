@@ -10,7 +10,7 @@ $timeout = 300;
 $path = trim($_SERVER['REQUEST_URI'], '/');
 $path = parse_url($path, PHP_URL_PATH);
 
-$protectedRoutes = ['workouts', 'main', 'profile', 'createWorkout', 'adminPanel', 'viewWorkout', 'users'];
+$protectedRoutes = ['workouts', 'main', 'profile', 'createWorkout', 'adminPanel', 'viewWorkout', 'users', 'settings'];
 
 if (in_array($path, $protectedRoutes) || preg_match('/^workouts\/\d+$/', $path)) {
     if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $timeout)) {
@@ -39,6 +39,7 @@ Routing::get('profile', 'NavigationController');
 Routing::get('workouts', 'NavigationController');
 Routing::get('createWorkout', 'NavigationController');
 Routing::get('users', 'NavigationController');
+Routing::get('settings', 'NavigationController');
 
 Routing::get('viewWorkout', 'WorkoutsController');
 Routing::get('adminPanel', 'AdminController');
@@ -48,6 +49,10 @@ Routing::post('registration', 'SecurityController');
 Routing::post('login', 'SecurityController');
 
 Routing::post('updateProfile', 'ProfileController');
+Routing::post('changePassword', 'ProfileController');
+Routing::post('changeEmail', 'ProfileController');
+Routing::post('deleteAccount', 'ProfileController');
+Routing::post('changeVisibility', 'ProfileController');
 
 Routing::post('search', 'WorkoutsController');
 Routing::post('addWorkout', 'WorkoutsController');

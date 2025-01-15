@@ -43,4 +43,8 @@ class NavigationController extends AppController {
         $users = $this->userRepository->getUsersProfiles('user');
         return $this->render('main/users', ['currentUser' => $this->currentUser, 'users' => $users]);
     }
+
+    public function settings() {
+        return $this->render('main/settings', ['currentUser' => $this->currentUser]);
+    }
 }

@@ -23,4 +23,9 @@
             }
             print $output;
         }
+
+        protected function isStrongPassword($password) {
+            $pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/';
+            return preg_match($pattern, $password);
+        }
     }

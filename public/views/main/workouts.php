@@ -37,7 +37,7 @@
                 </li>
                 <li>
                     <i class="fa-solid fa-gear"></i>
-                    <a href="setting" class="nav-button">Setting</a>
+                    <a href="settings" class="nav-button">Settings</a>
                 </li>
                 <?php if ($currentUser->getRole() === 'admin'): ?>
                 <li>

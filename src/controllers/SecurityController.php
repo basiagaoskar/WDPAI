@@ -91,9 +91,4 @@ class SecurityController extends AppController {
 
         return $this->render('registration');
     }
-
-    private function isStrongPassword($password) {
-        $pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/';
-        return preg_match($pattern, $password);
-    }
 }

@@ -63,4 +63,64 @@ class ProfileController extends AppController {
         }
         return true;
     }
+
+    public function changePassword() {
+        if ($this->isPost()) {
+            $email = $_SESSION['user_email'];
+            $currentPassword = $_POST['current_password'];
+            $newPassword = $_POST['new_password'];
+            if (!$this->userRepository->verifyPassword($email, $currentPassword)) {
+                header('Location: /settings?error=Invalid current password');
+                exit();
+            } elseif  (!$this->isStrongPassword($newPassword)) {
+                header('Location: /settings?error=Invalid new password');
+                exit();
+            } else {
+                $this->userRepository->updatePassword($email, $newPassword);
+                header('Location: /settings?success=Password changed successfully');
+                exit();
+            }
+        }
+    }
+
+    public function changeEmail() {
+        if ($this->isPost()) {
+            $email = $_SESSION['user_email'];
+            $newEmail = $_POST['new_email'];
+
+            if ($this->userRepository->updateEmail($email, $newEmail)) {
+                header('Location: /login?message=Email updated successfully, log in with new email');
+            } else {
+                header('Location: /settings?message=Failed to update email');
+            }
+        }
+    }
+
+    public function deleteAccount() {
+        if ($this->isPost()) {
+            $email = $_SESSION['user_email'];
+            $confirmation = $_POST['confirm_delete'];
+
+            if ($confirmation === 'DELETE') {
+                $this->userRepository->deleteUser($email);
+                session_destroy();
+                header('Location: /login?success=Account deleted successfully');
+            } else {
+                header('Location: /settings?error=Account deletion failed. Please type DELETE to confirm.');
+            }
+        }
+    }
+
+    public function changeVisibility() {
+        if ($this->isPost()) {
+            $email = $_SESSION['user_email'];
+            $visibility = $_POST['visibility'];
+
+            if ($this->userRepository->updateVisibility($email, $visibility)) {
+                header('Location: /settings?success=Visibility updated successfully');
+            } else {
+                header('Location: /settings?error=Failed to update visibility');
+            }
+        }
+    }
 }
