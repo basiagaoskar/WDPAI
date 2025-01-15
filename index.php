@@ -56,6 +56,7 @@ Routing::post('changeVisibility', 'ProfileController');
 
 Routing::post('search', 'WorkoutsController');
 Routing::post('addWorkout', 'WorkoutsController');
+Routing::post('deleteWorkout', 'WorkoutsController');
 
 Routing::post('changeRole', 'AdminController');
 Routing::post('deleteUser', 'AdminController');

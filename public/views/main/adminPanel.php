@@ -31,10 +31,6 @@
                     <a href="users" class="nav-button">Users</a>
                 </li>
                 <li>
-                    <i class="fa-solid fa-bell"></i>
-                    <a href="notifications" class="nav-button">Notifications</a>
-                </li>
-                <li>
                     <i class="fa-solid fa-gear"></i>
                     <a href="settings" class="nav-button">Settings</a>
                 </li>

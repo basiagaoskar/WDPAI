@@ -31,10 +31,6 @@
                     <a href="users" class="nav-button">Users</a>
                 </li>
                 <li>
-                    <i class="fa-solid fa-bell"></i>
-                    <a href="notifications" class="nav-button">Notifications</a>
-                </li>
-                <li>
                     <i class="fa-solid fa-gear"></i>
                     <a href="settings" class="nav-button">Settings</a>
                 </li>
@@ -72,12 +68,12 @@
                         <div class="exercises-container">
                             <?php foreach ($exercises as $exercise): ?>
                                 <div class="exercise-block">
-                                    <input type="checkbox" id="exercise-<?= $exercise->id ?>" name="exercises[]" value="<?= $exercise->id ?>">
-                                    <label for="exercise-<?= $exercise->id ?>">
-                                        <img src="public/img/exercises/<?= $exercise->image ?>" alt="<?= $exercise->name ?>">
-                                        <h3><?= $exercise->name ?></h3>
-                                        <p><strong>Muscle Group:</strong> <?= $exercise->muscle_group ?></p>
-                                        <p><strong>Instruction:</strong> <?= $exercise->instruction ?></p>
+                                    <input type="checkbox" id="exercise-<?= $exercise->getId() ?>" name="exercises[]" value="<?= $exercise->getId() ?>">
+                                    <label for="exercise-<?= $exercise->getId() ?>">
+                                        <img src="public/img/exercises/<?= $exercise->getImage() ?>" alt="<?= $exercise->getName() ?>">
+                                        <h3><?= $exercise->getName() ?></h3>
+                                        <p><strong>Muscle Group:</strong> <?= $exercise->getMuscleGroup() ?></p>
+                                        <p><strong>Instruction:</strong> <?= $exercise->getDescription() ?></p>
                                     </label>
                                 </div>
                             <?php endforeach; ?>

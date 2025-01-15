@@ -2,6 +2,7 @@
 
 require_once 'Repository.php';
 require_once __DIR__ . '/../models/Workout.php';
+require_once __DIR__ . '/../models/Exercise.php';
 
 class WorkoutRepository extends Repository {
     public function getAllBasicWorkouts() {
@@ -55,18 +56,41 @@ class WorkoutRepository extends Repository {
         ');
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
+        $exercises = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return array_map(function ($exercise) {
+            return new Exercise(
+                $exercise['id'],
+                $exercise['name'],
+                $exercise['instruction'],
+                $exercise['muscle_group'],
+                $exercise['image']
+            );
+        }, $exercises);
     }
 
-    public function getWorkoutTitle($id) {
+    public function xd(int $id): ?Workout {
         $stmt = $this->database->connect()->prepare('
-            SELECT title FROM workouts WHERE id = :id
+            SELECT id, title, description, user_id, image FROM workouts WHERE workouts.id = :id
+            UNION
+            SELECT id, title, description, NULL as user_id, image FROM basic_workouts WHERE basic_workouts.id = :id
         ');
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, PDO::PARAM_STR);
         $stmt->execute();
     
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($row === false) {
+            return null;
+        }
+    
+        return new Workout(
+            $row['id'],
+            $row['title'],
+            $row['description'],
+            $row['user_id'],
+            $row['image']
+        );
     }
+    
     public function getExercisesByWorkoutId($workoutId) {
         $stmt = $this->database->connect()->prepare('
             SELECT e.id, e.name, e.muscle_group, e.instruction, e.image 
@@ -77,7 +101,16 @@ class WorkoutRepository extends Repository {
         $stmt->bindParam(':workoutId', $workoutId, PDO::PARAM_INT);
         $stmt->execute();
     
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $exercises = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return array_map(function ($exercise) {
+            return new Exercise(
+                $exercise['id'],
+                $exercise['name'],
+                $exercise['instruction'], // Poprawka nazwy pola
+                $exercise['muscle_group'],
+                $exercise['image']
+            );
+        }, $exercises);
     }
 
     public function addWorkout($title, $description, $userId, $image) {
@@ -120,5 +153,37 @@ class WorkoutRepository extends Repository {
                 $workout['image']
             );
         }, $workouts);
+    }
+
+    public function getWorkoutById(int $workoutId) {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM workouts WHERE id = :workoutId
+        ');
+        $stmt->bindParam(':workoutId', $workoutId, PDO::PARAM_INT);
+        $stmt->execute();
+    
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($row === false) {
+            return null;
+        }
+    
+        return new Workout(
+            $row['id'],
+            $row['title'],
+            $row['description'],
+            $row['user_id'],
+            $row['image']
+        );
+    }
+    
+
+    public function deleteWorkout(int $workoutId): bool {
+        $stmt = $this->database->connect()->prepare('
+            DELETE FROM workouts WHERE id = :workoutId
+        ');
+    
+        $stmt->bindParam(':workoutId', $workoutId, PDO::PARAM_INT);
+    
+        return $stmt->execute();
     }
 }

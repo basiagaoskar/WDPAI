@@ -67,8 +67,33 @@ class WorkoutsController extends AppController {
         
         $workoutRepository = new WorkoutRepository();
         $exercises = $workoutRepository->getExercisesByWorkoutId($id);
-        $workoutTitle = $workoutRepository->getWorkoutTitle($id);
+        $workout = $workoutRepository->xd($id);
     
-        return $this->render('main/viewWorkout', ['currentUser' => $currentUser, 'exercises' => $exercises, 'workoutTitle' => $workoutTitle['title']]);
+        return $this->render('main/viewWorkout', ['currentUser' => $currentUser, 'exercises' => $exercises, 'workout' => $workout]);
+    }
+
+    public function deleteWorkout() {
+        if ($this->isPost()) {
+            $workoutId = $_POST['workout_id'];
+            $userId = $_SESSION['user_id'];
+    
+            $workoutRepository = new WorkoutRepository();
+            $workout = $workoutRepository->getWorkoutById($workoutId);
+    
+            if ($workout->getUserId() === $userId || $_SESSION['user_role'] === 'admin') {
+                if ($workoutRepository->deleteWorkout($workoutId)) {
+                    header('Location: /workouts?success=Workout deleted successfully');
+                    exit();
+                } else {
+                    header('Location: /workouts?error=Failed to delete workout');
+                    exit();
+                }
+            } else {
+                header('Location: /workouts?error=Unauthorized');
+                exit();
+            }
+        }
+        header('Location: /workouts?error=Invalid request');
+        exit();
     }
 }

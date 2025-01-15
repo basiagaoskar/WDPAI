@@ -68,11 +68,24 @@
     color: #333;
 }
 
+.viewWorkout-section form {
+    margin-top: 3rem;
+}
+
+.viewWorkout-section form button {
+    font-size: 2rem;
+    background-color: #ff4d4d; 
+    color: white; 
+    border: none; 
+    padding: 1rem; 
+    border-radius: 5px; 
+    cursor: pointer;
+}
+
 @media (max-width: 1440px) {
     .exercise-card {
         width: 15rem;
     }
-
 }
 
 @media (max-width: 1020px) {

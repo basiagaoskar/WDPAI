@@ -32,10 +32,6 @@
                     <a href="users" class="nav-button">Users</a>
                 </li>
                 <li>
-                    <i class="fa-solid fa-bell"></i>
-                    <a href="notifications" class="nav-button">Notifications</a>
-                </li>
-                <li>
                     <i class="fa-solid fa-gear"></i>
                     <a href="settings" class="nav-button">Settings</a>
                 </li>
@@ -55,22 +51,26 @@
         </nav>
         <main>
             <section class="viewWorkout-section">
-                <h1><?= $workoutTitle ?></h1>
+                <h1><?= $workout->getTitle() ?></h1>
                 <h2>Exercises</h2>
                 <section class="exercises-section">
                     <div class="scrollable-exercises">
                         <div class="exercises-container">
                             <?php foreach ($exercises as $exercise): ?>
                                 <div class="exercise-card">
-                                    <img src="/public/img/exercises/<?= $exercise['image'] ?>" alt="Exercise Image">
-                                    <h3><?= $exercise['name'] ?></h3>
-                                    <p><?= $exercise['description'] ?></p>
-                                    <p><strong>Muscle Group:</strong> <?= $exercise['muscle_group'] ?></p>
+                                    <img src="/public/img/exercises/<?= $exercise->getImage() ?>" alt="Exercise Image">
+                                    <h3><?= $exercise->getName() ?></h3>
+                                    <p><?= $exercise->getDescription() ?></p>
+                                    <p><strong>Muscle Group:</strong> <?= $exercise->getMuscleGroup() ?></p>
                                 </div>
                             <?php endforeach; ?>
                         </div>
                     </div>
                 </section>
+                <form action="deleteWorkout" method="POST">
+                    <input type="hidden" name="workout_id" value="<?= $workout->getId() ?>">
+                    <button type="submit">Delete Workout</button>
+                </form>
             </section>
         </main>
     </div>
