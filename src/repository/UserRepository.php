@@ -98,7 +98,6 @@ class UserRepository extends Repository {
     
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
 
     public function getProfileVisibility(int $userId) {
         $stmt = $this->database->connect()->prepare('

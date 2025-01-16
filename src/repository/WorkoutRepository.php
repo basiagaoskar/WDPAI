@@ -178,11 +178,24 @@ class WorkoutRepository extends Repository {
     }
     
     public function deleteWorkout(int $workoutId): bool {
-        $stmt = $this->database->connect()->prepare('
-            DELETE FROM workouts WHERE id = :workoutId
-        ');
+        $conn = $this->database->connect();
+        $conn->beginTransaction();
     
-        $stmt->bindParam(':workoutId', $workoutId, PDO::PARAM_INT);
-        return $stmt->execute();
+        try {
+            $stmt = $conn->prepare('DELETE FROM workout_exercises WHERE workout_id = :workoutId');
+            $stmt->bindParam(':workoutId', $workoutId, PDO::PARAM_INT);
+            $stmt->execute();
+    
+            $stmt = $conn->prepare('DELETE FROM workouts WHERE id = :workoutId');
+            $stmt->bindParam(':workoutId', $workoutId, PDO::PARAM_INT);
+            $stmt->execute();
+    
+            $conn->commit();
+            return true;
+        } catch (Exception $e) {
+            $conn->rollBack();
+            error_log("Failed to delete workout: " . $e->getMessage());
+            return false;
+        }
     }
 }
