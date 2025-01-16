@@ -104,3 +104,28 @@ header {
         float: left;
     }
 }
+
+@media (max-width: 768px) {
+    header {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+    }
+
+    .search-bar {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .add-workout {
+        width: 100%;
+    }
+    .workouts {
+        padding: 0;
+    }
+}
+
+@media (max-width: 450px) {
+    .workouts p {
+    display: none;
+    }
+}

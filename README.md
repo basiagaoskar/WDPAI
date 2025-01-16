@@ -76,14 +76,8 @@ ZIUTKI GYM is a web application designed for users who want to manage their prof
    cd ziutki-gym
    docker-compose up --build
    ```
-
-3. **Configure the database**:
-   - Ensure that the database container is running.
-   - Connect to the database container and import the SQL migration file.
-   ```bash
-   docker exec -i database_container_name psql -U username -d ziutki_gym < database/migrations.sql
-   ```
 After completing these steps, the application will be available at http://localhost:8080.
+
 ---
 
 ## Usage

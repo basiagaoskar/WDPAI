@@ -10,9 +10,15 @@
     <link rel="stylesheet" type="text/css" href="/public/css/main/nav-styles.css">
     <link rel="stylesheet" type="text/css" href="/public/css/main/workouts-styles.css">
     <script type="text/javascript" src="/public/js/search.js" defer></script>
+    <script src="/public/js/hamburger.js" defer></script>
 </head>
 <body>
     <div class="base-container">
+        <div class="hamburger-menu">
+            <button id="hamburger-btn">
+            <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
         <nav>
             <div class="logo-and-text">
                 <h1>ZIUTKI GYM</h1>

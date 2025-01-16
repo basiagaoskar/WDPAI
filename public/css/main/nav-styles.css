@@ -124,8 +124,6 @@ form>.nav-button{
     }
 }
 
-
-
 @media (max-width: 1250px) {
     .logo-and-text h1{
         font-size: 2rem;
@@ -137,6 +135,23 @@ form>.nav-button{
     }
 }
 
+.hamburger-menu {
+    display: none;
+    top: 15px;
+    left: 15px;
+    z-index: 1000;
+}
+
+#hamburger-btn {
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.hamburger-menu {
+    display: none;
+}
 
 @media (max-width: 1020px) {
     .base-container {
@@ -145,43 +160,60 @@ form>.nav-button{
         justify-content: center;
     }
     
+    .hamburger-menu {
+        display: block;
+        position: fixed;
+        top: 10px;
+        left: 15px;
+        z-index: 1000;
+    }
+
+    #hamburger-btn {
+        font-size: 2rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: black;
+    }
+
     nav {
-        background: transparent linear-gradient(180deg, #c7c6ff 0%, #817ffc 100%) 0% 0% no-repeat padding-box;
-        height: 25%;
-        width: 100%;
-        max-width: 80%;
-        margin-top: 1rem;
+        display: none;
     }
 
     .logo-and-text {
-        margin-top: 3%;
-        justify-content: center;
-        text-align: center;
+        display: none
     }
 
-    .logo-and-text h1{
-        font-size: 4rem;
-        line-height: 4.8rem;
+    nav.active {
+        display: block;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        z-index: 999;
+        width: 16rem;
+        height: 100%;
+        margin: 0;
+        border: none;
+        border-radius:0;
+        opacity: 0.95;
     }
-    
-    .logo-and-text img{
-        width: 10rem;
+
+    nav.active ul {
+        margin-top: 5rem;
     }
-    li{
-        display: none;
+
+    nav.active .nav-button {
+        font-size: 1.2rem;
     }
 
     .workouts {
         grid-template-columns: 1fr; 
-        
     }
     
     li:last-child {
         position: relative;
     }
 }
-
-
 
 @media (max-width: 580px) {
     .logo-and-text h1{
@@ -190,5 +222,4 @@ form>.nav-button{
     .logo-and-text img{
         display: none;
     }
-
 }
