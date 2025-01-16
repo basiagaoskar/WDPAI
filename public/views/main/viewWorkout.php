@@ -67,10 +67,12 @@
                         </div>
                     </div>
                 </section>
-                <form action="deleteWorkout" method="POST">
-                    <input type="hidden" name="workout_id" value="<?= $workout->getId() ?>">
-                    <button type="submit">Delete Workout</button>
-                </form>
+                <?php if ($currentUser->getId() === $workout->getUserId() || $currentUser->getRole() === 'admin'):?>
+                    <form action="deleteWorkout" method="POST">
+                        <input type="hidden" name="workout_id" value="<?= $workout->getId() ?>">
+                        <button type="submit">Delete Workout</button>
+                    </form>
+                <?php endif; ?>
             </section>
         </main>
     </div>

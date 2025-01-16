@@ -68,7 +68,7 @@ class WorkoutRepository extends Repository {
         }, $exercises);
     }
 
-    public function xd(int $id): ?Workout {
+    public function getWrokoutById(int $id): ?Workout {
         $stmt = $this->database->connect()->prepare('
             SELECT id, title, description, user_id, image FROM workouts WHERE workouts.id = :id
             UNION
@@ -95,8 +95,9 @@ class WorkoutRepository extends Repository {
         $stmt = $this->database->connect()->prepare('
             SELECT e.id, e.name, e.muscle_group, e.instruction, e.image 
             FROM exercises e
-            JOIN workout_exercises we ON e.id = we.exercise_id
-            WHERE we.workout_id = :workoutId
+            LEFT JOIN workout_exercises we ON e.id = we.exercise_id AND we.workout_id = :workoutId
+            LEFT JOIN basic_workout_exercises bwe ON e.id = bwe.exercise_id AND bwe.basic_workout_id = :workoutId
+            WHERE we.workout_id IS NOT NULL OR bwe.basic_workout_id IS NOT NULL;
         ');
         $stmt->bindParam(':workoutId', $workoutId, PDO::PARAM_INT);
         $stmt->execute();
@@ -106,7 +107,7 @@ class WorkoutRepository extends Repository {
             return new Exercise(
                 $exercise['id'],
                 $exercise['name'],
-                $exercise['instruction'], // Poprawka nazwy pola
+                $exercise['instruction'],
                 $exercise['muscle_group'],
                 $exercise['image']
             );
@@ -176,14 +177,12 @@ class WorkoutRepository extends Repository {
         );
     }
     
-
     public function deleteWorkout(int $workoutId): bool {
         $stmt = $this->database->connect()->prepare('
             DELETE FROM workouts WHERE id = :workoutId
         ');
     
         $stmt->bindParam(':workoutId', $workoutId, PDO::PARAM_INT);
-    
         return $stmt->execute();
     }
 }

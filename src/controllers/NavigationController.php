@@ -40,7 +40,11 @@ class NavigationController extends AppController {
     }
 
     public function users() {
-        $users = $this->userRepository->getUsersProfiles('user');
+        $users = $this->userRepository->getUsersProfiles('public');
+        if ($this->currentUser->getRole() === 'admin') {
+            $private_users = $this->userRepository->getUsersProfiles('private');
+            $users = array_merge($users, $private_users);
+        }
         return $this->render('main/users', ['currentUser' => $this->currentUser, 'users' => $users]);
     }
 

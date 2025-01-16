@@ -97,8 +97,11 @@
                         <div class="form-group">
                             <label for="visibility">Choose visibility</label>
                             <select id="visibility" name="visibility">
-                                <option value="public">Public</option>
-                                <option value="private">Private</option>
+                                <?php 
+                                $userRepository = new UserRepository();
+                                $currentVisibility = $userRepository->getProfileVisibility($currentUser->getId()); ?>
+                                <option value="public" <?= ($currentVisibility === 'public') ? 'selected' : '' ?>>Public</option>
+                                <option value="private" <?= ($currentVisibility === 'private') ? 'selected' : '' ?>>Private</option>
                             </select>
                         </div>
                         <button type="submit">Save Visibility</button>

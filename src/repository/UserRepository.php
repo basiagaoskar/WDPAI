@@ -30,6 +30,30 @@ class UserRepository extends Repository {
         return $userObj;
     }
 
+    public function getUserById(int $userId): ?User {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM users WHERE id = :userId
+        ');
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+    
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($user == false) {
+            return null;
+        }
+    
+        $userObj = new User(
+            $user['email'],
+            $user['password'],
+            $user['name'],
+            $user['surname'],
+            $user['role']
+        );
+        $userObj->setId($user['id']);
+    
+        return $userObj;
+    }
     public function createUser(User $user): void
     {
         $stmt = $this->database->connect()->prepare('
@@ -62,17 +86,29 @@ class UserRepository extends Repository {
         return $users;
     }
 
-    public function getUsersProfiles($type) {
+    public function getUsersProfiles($visibility) {
         $stmt = $this->database->connect()->prepare('
-            SELECT users.name, users.surname, user_profiles.bio, user_profiles.profile_picture
+            SELECT users.id, users.name, users.surname, user_profiles.bio, user_profiles.profile_picture
             FROM users
             LEFT JOIN user_profiles ON users.id = user_profiles.user_id
-            WHERE users.role = :role;
+            WHERE users.role = \'user\' AND user_profiles.visibility = :visibility;
         ');
-        $stmt->bindParam(':role', $type, PDO::PARAM_STR);
+        $stmt->bindParam(':visibility', $visibility, PDO::PARAM_STR);
         $stmt->execute();
     
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+
+    public function getProfileVisibility(int $userId) {
+        $stmt = $this->database->connect()->prepare('
+            SELECT visibility FROM user_profiles WHERE user_id = :userId
+        ');
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+    
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result ? $result['visibility'] : 'private';
     }
 
     public function deleteUserByEmail(string $email): bool

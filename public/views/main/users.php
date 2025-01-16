@@ -55,6 +55,24 @@
                         <img src="/public/uploads/<?= $user['profile_picture'] ?>" alt="Profile Image">
                         <h2><?= $user['name'] . ' ' . $user['surname'] ?></h2>
                         <p><?= $user['bio'] ?></p>
+                        <?php 
+                            $workoutRepository = new WorkoutRepository();
+                            $workouts = $workoutRepository->getUserWorkouts($user['id']);
+                            if ($workouts != NULL): ?>
+                                <div class="user-workouts">
+                                    <h3>Workouts</h3>
+                                    <div class="workouts-container">
+                                        <?php foreach ($workouts as $workout): ?>
+                                            <a href="/viewWorkout/<?= $workout->getId(); ?>" class="workout-link">
+                                                <div class="workout-card">
+                                                    <img src="/public/img/workouts/<?= $workout->getImage() ?>" alt="Workout Image">
+                                                    <h4><?= $workout->getTitle() ?></h4>
+                                                </div>
+                                            </a>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
+                        <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
             </section>

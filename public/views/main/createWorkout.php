@@ -81,6 +81,9 @@
                     </div>
                     <button type="submit">Add Workout</button>
                 </form>
+                <?php if (isset($_GET['error'])): ?>
+                    <p class="error"><?= $_GET['error'] ?></p>
+                <?php endif; ?>
             </section>
         </main>
     </div>

@@ -19,6 +19,11 @@ class Routing {
     }
 
         public static function run($url) {
+            if ($url === '') {
+                header("Location: /home");
+                exit();
+            }
+            
             $urlParts = explode("/", $url);
             $action = $urlParts[0];
     

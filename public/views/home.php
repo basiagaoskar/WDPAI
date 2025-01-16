@@ -32,7 +32,9 @@
             <div class="motivation-text">
                 <h1>Unleash Your Potential</h1>
                 <p>Join the best gym community and transform your life today!</p>
-                <button class="motivation-button">Join Now</button>
+                <a href="login">
+                    <button class="motivation-button">Join Now</button>
+                </a>
             </div>
             <img src="/public/img/motivational.png" alt="Motivational Image">
 

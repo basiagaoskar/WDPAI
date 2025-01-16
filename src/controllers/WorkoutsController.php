@@ -37,11 +37,18 @@ class WorkoutsController extends AppController {
 
     public function addWorkout() {
         if ($this->isPost()) {
+            $userId = $_SESSION['user_id'];
+            $workoutRepository = new WorkoutRepository();
+            $userWorkouts = $workoutRepository->getUserWorkouts($userId);
+
+            if (count($userWorkouts) >= 3) {
+                header("Location: /createWorkout?error=You can only create up to 3 workouts.");
+                exit();
+            }
             $title = $_POST['title'];
             $description = $_POST['description'];
             $image = $_FILES['image']['name'];
             $target = "public/img/workouts/".basename($image);
-            $userId = $_SESSION['user_id'];
 
             move_uploaded_file($_FILES['image']['tmp_name'], $target);
 
@@ -58,17 +65,25 @@ class WorkoutsController extends AppController {
     }
 
     public function viewWorkout($id) {
-        if (!is_numeric($id)) {
+        $workoutRepository = new WorkoutRepository();
+        $exercises = $workoutRepository->getExercisesByWorkoutId($id);
+        $workout = $workoutRepository->getWrokoutById($id);
+
+        if (!is_numeric($id) || $id <= 0 || !$exercises || !$workout) {
             header("Location: /workouts");
             exit();
         }
         $userRepository = new UserRepository();
         $currentUser = $userRepository->getUser($_SESSION['user_email']);
         
-        $workoutRepository = new WorkoutRepository();
-        $exercises = $workoutRepository->getExercisesByWorkoutId($id);
-        $workout = $workoutRepository->xd($id);
-    
+        if ($workout->getUserId()) {
+            $visibility = $userRepository->getProfileVisibility($workout->getUserId());
+
+            if ($visibility !== 'public' && $currentUser->getId() !== $workout->getUserId() && $currentUser->getRole() !== 'admin') {
+                header("Location: /workouts");
+                exit();
+            }
+        }
         return $this->render('main/viewWorkout', ['currentUser' => $currentUser, 'exercises' => $exercises, 'workout' => $workout]);
     }
 
@@ -79,8 +94,11 @@ class WorkoutsController extends AppController {
     
             $workoutRepository = new WorkoutRepository();
             $workout = $workoutRepository->getWorkoutById($workoutId);
-    
-            if ($workout->getUserId() === $userId || $_SESSION['user_role'] === 'admin') {
+            
+            $userRepository = new UserRepository();
+            $currentUser = $userRepository->getUser($_SESSION['user_email']);
+
+            if ($workout->getUserId() === $userId || $currentUser->getRole() === 'admin') {
                 if ($workoutRepository->deleteWorkout($workoutId)) {
                     header('Location: /workouts?success=Workout deleted successfully');
                     exit();
