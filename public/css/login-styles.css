@@ -16,7 +16,6 @@ body {
     display: flex;
     flex-wrap: wrap;
     width: 90%;
-    margin: 5vh auto;
     border: 2px solid #000;
     border-radius: 3rem;
     overflow: hidden;
@@ -56,7 +55,7 @@ body {
     width: 40%;
     background-color: white;
     text-align: center;
-    padding: 2rem;
+    padding: 1rem 2rem 0 2rem;
 }
 
 .right h1, h2 {
@@ -107,7 +106,6 @@ input {
     color: red;
     text-align: center;
     font-weight: 900;
-
 }
 
 .loginButton, .registerButton{
@@ -125,8 +123,12 @@ input {
     cursor: pointer;
 }
 
+.loginButton {
+    margin-top: 9rem;
+}
+
 .registerButton{
-    margin: 2rem auto 0;
+    margin-top: 7rem;
 }
 
 .registerButton:disabled {
@@ -149,7 +151,7 @@ input {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 4rem auto 1rem;
+    margin: 2rem auto 1rem;
     width: 80%;
     max-width: 400px;
 }

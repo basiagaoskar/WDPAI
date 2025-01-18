@@ -38,7 +38,6 @@ ZIUTKI GYM is a web application designed for users who want to manage their prof
       "id": "Workout ID",
       "title": "Title",
       "description": "Description",
-      "user_id": "User ID",
       "image": "Image filename"
   }
   ```
@@ -68,12 +67,12 @@ ZIUTKI GYM is a web application designed for users who want to manage their prof
 ## Installation
 1. **Clone the project**:
    ```bash
-   git clone https://github.com/your-repo/ziutki-gym.git
+   git clone  https://github.com/basiagaoskar/WDPAI
    ```
 
 2. **Run the project using Docker**:
    ```bash
-   cd ziutki-gym
+   cd WDPAI
    docker-compose up --build
    ```
 After completing these steps, the application will be available at http://localhost:8080.

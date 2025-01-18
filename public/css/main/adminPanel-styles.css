@@ -1,3 +1,11 @@
+nav {
+    position: fixed;
+}
+
+main {
+    margin-left: 21vw;
+}
+
 main h1 {
     font-size: 4rem;
     text-align: center;
